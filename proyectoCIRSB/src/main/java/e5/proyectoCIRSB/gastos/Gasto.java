@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
      
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idTipo")
-    private TiposGastos tipoGasto;
+    private TiposGastos idTipo;
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="usuariosgastos", joinColumns=@JoinColumn(name="idGasto"), inverseJoinColumns=@JoinColumn(name="ciUsuario"))
@@ -73,12 +73,12 @@ private static final long serialVersionUID = 1L;
 		this.fecha = fecha;
 	}
 
-	public TiposGastos getTipoGasto() {
-		return tipoGasto;
+	public TiposGastos getIdTipo() {
+		return idTipo;
 	}
 
-	public void setTipoGasto(TiposGastos tipoGasto) {
-		this.tipoGasto = tipoGasto;
+	public void setIdTipo(TiposGastos idTipo) {
+		this.idTipo = idTipo;
 	}
 
 	public List<UsuariosEntity> getUsuarios() {

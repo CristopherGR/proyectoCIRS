@@ -30,11 +30,11 @@ public class CreditosEntity implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idTipo")	
-    private int idTipo;
+    private TiposCreditos idTipo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idEstado")
-    private int idEstado;
+    private EstadosCreditos idEstado;
 	
     private Date fechaCredito;
     private float valor;
@@ -55,16 +55,16 @@ public class CreditosEntity implements Serializable {
 	public void setIdCredito(int idCredito) {
 		this.idCredito = idCredito;
 	}
-	public int getIdTipo() {
+	public TiposCreditos getIdTipo() {
 		return idTipo;
 	}
-	public void setIdTipo(int idTipo) {
+	public void setIdTipo(TiposCreditos idTipo) {
 		this.idTipo = idTipo;
 	}
-	public int getIdEstado() {
+	public EstadosCreditos getIdEstado() {
 		return idEstado;
 	}
-	public void setIdEstado(int idEstado) {
+	public void setIdEstado(EstadosCreditos idEstado) {
 		this.idEstado = idEstado;
 	}
 	public Date getFechaCredito() {

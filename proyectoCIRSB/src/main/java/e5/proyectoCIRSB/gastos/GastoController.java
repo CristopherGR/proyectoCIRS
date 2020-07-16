@@ -48,7 +48,6 @@ public class GastoController {
 		gastoActual.setDescripcion(gasto.getDescripcion());
 		gastoActual.setValor(gasto.getValor());
 		gastoActual.setFecha(gasto.getFecha());
-		gastoActual.setTipoGasto(gasto.getTipoGasto());
 		
 		return gastoService.save(gastoActual); 
 	}

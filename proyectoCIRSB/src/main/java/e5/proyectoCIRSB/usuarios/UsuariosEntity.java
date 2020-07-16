@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -39,7 +40,8 @@ public class UsuariosEntity implements Serializable {
 	private Date fechaNa;
 	private String estado;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="usuariosAportes", joinColumns=@JoinColumn(name="ciUsuario"), inverseJoinColumns=@JoinColumn(name="idAporte"))
 	private List<AportesEntity> aportes; 
 	
 	public String getCiUsuario() {
