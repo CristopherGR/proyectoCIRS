@@ -1,30 +1,55 @@
 package e5.proyectoCIRSB.creditos;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import e5.proyectoCIRSB.pagos.PagosEntity;
+
 
 @Entity
 @Table(name="creditos")
-public class CreditosEntity {
+public class CreditosEntity implements Serializable {
     
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	 private int idCredito;
-     private int idTipo;
-     private int idEstado;
-     private Date fechaCredito;
-     private float valor;
-     private int cuotas;
-     private int cuotasPagadas;
-     private float interes;
-     private float totalPagar;
-     private String descripcion;
-	public int getIdCredito() {
+	private int idCredito;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="idTipo")	
+    private int idTipo;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="idEstado")
+    private int idEstado;
+	
+    private Date fechaCredito;
+    private float valor;
+    private int cuotas;
+    private int cuotasPagadas;
+    private float interes;
+    private float totalPagar;
+    private String descripcion;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="creditospagos", joinColumns=@JoinColumn(name="idCredito"), inverseJoinColumns=@JoinColumn(name="idPago"))
+	private List<PagosEntity> pagos;
+	
+	
+    public int getIdCredito() {
 		return idCredito;
 	}
 	public void setIdCredito(int idCredito) {

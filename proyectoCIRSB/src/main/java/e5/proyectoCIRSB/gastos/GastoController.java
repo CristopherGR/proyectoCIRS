@@ -45,9 +45,9 @@ public class GastoController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Gasto update(@RequestBody Gasto gasto, @PathVariable Integer id) {
 		Gasto gastoActual = gastoService.findById(id); 
-		gastoActual.setMotivo(gasto.getMotivo());
-		gastoActual.setNumFactura(gasto.getNumFactura());
+		gastoActual.setDescripcion(gasto.getDescripcion());
 		gastoActual.setValor(gasto.getValor());
+		gastoActual.setFecha(gasto.getFecha());
 		gastoActual.setTipoGasto(gasto.getTipoGasto());
 		
 		return gastoService.save(gastoActual); 

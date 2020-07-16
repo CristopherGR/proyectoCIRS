@@ -1,73 +1,92 @@
 package e5.proyectoCIRSB.gastos;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import e5.proyectoCIRSB.usuarios.UsuariosEntity;
+
 @Entity
 @Table(name="gastos")
-public class Gasto {
-    
+public class Gasto implements Serializable{
+  
+private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	 private int id;
-     private String motivo;
+	 private int idGasto;
+     private String descripcion;
      private Float valor;
-     private String numFactura;
-     private String tipoGasto;
-     
-     
      private Date fecha;
+     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idTipo")
+    private TiposGastos tipoGasto;
+    
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="usuariosgastos", joinColumns=@JoinColumn(name="idGasto"), inverseJoinColumns=@JoinColumn(name="ciUsuario"))
+	private List<UsuariosEntity> usuarios; 
      
     @PrePersist 
     public void prePersist() {
     	fecha = new Date(); 
     }
-     
-	public int getd() {
-		return id;
+
+	public int getIdGasto() {
+		return idGasto;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setIdGasto(int idGasto) {
+		this.idGasto = idGasto;
 	}
-	public String getMotivo() {
-		return motivo;
+
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setMotivo(String motivo) {
-		this.motivo = motivo;
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
+
 	public Float getValor() {
 		return valor;
 	}
+
 	public void setValor(Float valor) {
 		this.valor = valor;
 	}
-	public String getNumFactura() {
-		return numFactura;
-	}
-	
-	public void setNumFactura(String numFactura) {
-		this.numFactura = numFactura;
-	}
-	
+
 	public Date getFecha() {
 		return fecha;
 	}
+
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	
-	public String getTipoGasto() {
+
+	public TiposGastos getTipoGasto() {
 		return tipoGasto;
 	}
-	public void setTipoGasto(String tipoGasto) {
+
+	public void setTipoGasto(TiposGastos tipoGasto) {
 		this.tipoGasto = tipoGasto;
 	}
-     
-     
+
+	public List<UsuariosEntity> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<UsuariosEntity> usuarios) {
+		this.usuarios = usuarios;
+	}
+    
 }
