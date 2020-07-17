@@ -2,7 +2,6 @@ package e5.proyectoCIRSB.pagos;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,11 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import e5.proyectoCIRSB.usuarios.UsuariosEntity;
 
 @Entity
 @Table(name="pagos")
@@ -32,9 +28,6 @@ public class PagosEntity implements Serializable {
 	@JoinColumn(name="idTipoPago")
 	private TiposPagos tipoPago;
 	
-	@ManyToMany(mappedBy="pago")
-	private List<UsuariosEntity> usuarios; 
-
 	public int getIdPago() {
 		return idPago;
 	}
@@ -65,13 +58,5 @@ public class PagosEntity implements Serializable {
 
 	public void setTipoPago(TiposPagos tipoPago) {
 		this.tipoPago = tipoPago;
-	}
-
-	public List<UsuariosEntity> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<UsuariosEntity> usuarios) {
-		this.usuarios = usuarios;
 	}
 }

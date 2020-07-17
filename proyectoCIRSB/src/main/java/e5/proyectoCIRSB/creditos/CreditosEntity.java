@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import e5.proyectoCIRSB.multas.MultasEntity;
 import e5.proyectoCIRSB.pagos.PagosEntity;
 
 
@@ -30,11 +31,11 @@ public class CreditosEntity implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idTipo")	
-    private int idTipo;
+    private TiposCreditos idTipo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idEstado")
-    private int idEstado;
+    private EstadosCreditos idEstado;
 	
     private Date fechaCredito;
     private float valor;
@@ -48,66 +49,87 @@ public class CreditosEntity implements Serializable {
 	@JoinTable(name="creditospagos", joinColumns=@JoinColumn(name="idCredito"), inverseJoinColumns=@JoinColumn(name="idPago"))
 	private List<PagosEntity> pagos;
 	
-	
-    public int getIdCredito() {
+
+	public int getIdCredito() {
 		return idCredito;
 	}
+
 	public void setIdCredito(int idCredito) {
 		this.idCredito = idCredito;
 	}
-	public int getIdTipo() {
+
+	public TiposCreditos getIdTipo() {
 		return idTipo;
 	}
-	public void setIdTipo(int idTipo) {
+
+	public void setIdTipo(TiposCreditos idTipo) {
 		this.idTipo = idTipo;
 	}
-	public int getIdEstado() {
+
+	public EstadosCreditos getIdEstado() {
 		return idEstado;
 	}
-	public void setIdEstado(int idEstado) {
+
+	public void setIdEstado(EstadosCreditos idEstado) {
 		this.idEstado = idEstado;
 	}
+
 	public Date getFechaCredito() {
 		return fechaCredito;
 	}
+
 	public void setFechaCredito(Date fechaCredito) {
 		this.fechaCredito = fechaCredito;
 	}
+
 	public float getValor() {
 		return valor;
 	}
+
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+
 	public int getCuotas() {
 		return cuotas;
 	}
+
 	public void setCuotas(int cuotas) {
 		this.cuotas = cuotas;
 	}
+
 	public int getCuotasPagadas() {
 		return cuotasPagadas;
 	}
+
 	public void setCuotasPagadas(int cuotasPagadas) {
 		this.cuotasPagadas = cuotasPagadas;
 	}
+
 	public float getInteres() {
 		return interes;
 	}
+
 	public void setInteres(float interes) {
 		this.interes = interes;
 	}
+
 	public float getTotalPagar() {
 		return totalPagar;
 	}
+
 	public void setTotalPagar(float totalPagar) {
 		this.totalPagar = totalPagar;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
    
 }
