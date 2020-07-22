@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IGastoM extends CrudRepository <Gasto, Integer> {
 
-	/*@Query(" from tiposgastos ")
-	public List<TiposGastos> findAllGasto(); */
+	@Query(" from TiposGastos ")
+	public List<TiposGastos> findAllTiposGasto(); 
 }

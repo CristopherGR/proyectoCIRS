@@ -35,5 +35,11 @@ public class GastoServiceIm implements GastoService {
 		return gastoModel.findById(id).orElseThrow(null);
 	}
 
+	@Override
+	public List<TiposGastos> findAllTiposGasto() {
+		// TODO Auto-generated method stub
+		return (List<TiposGastos>) gastoModel.findAllTiposGasto();
+	}
+
 	
 }
