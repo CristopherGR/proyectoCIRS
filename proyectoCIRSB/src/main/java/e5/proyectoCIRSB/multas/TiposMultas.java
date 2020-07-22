@@ -36,5 +36,4 @@ public class TiposMultas implements Serializable{
 		Descripcion = descripcion;
 	}
 	
-	//prueba
 }
