@@ -14,8 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import e5.proyectoCIRSB.aportesMensuales.AportesEntity;
-
+import e5.proyectoCIRSB.creditos.CreditosEntity;
 
 @Entity
 @Table(name="usuariossistema")
@@ -40,10 +39,10 @@ public class UsuariosEntity implements Serializable {
 	private Date fechaNa;
 	private String estado;
 	
-    @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(name="usuariosAportes", joinColumns=@JoinColumn(name="ciUsuario"), inverseJoinColumns=@JoinColumn(name="idAporte"))
-	private List<AportesEntity> aportes; 
-	
+	@ManyToMany
+	@JoinTable(name="usuarioscreditos", joinColumns=@JoinColumn(name="ciUsuario"), inverseJoinColumns=@JoinColumn(name="idCredito"))
+	private List<CreditosEntity> credito;
+
 	public String getCiUsuario() {
 		return ciUsuario;
 	}
@@ -52,14 +51,6 @@ public class UsuariosEntity implements Serializable {
 		this.ciUsuario = ciUsuario;
 	}
 	
-	public List<AportesEntity> getAportes() {
-		return aportes;
-	}
-
-	public void setAportes(List<AportesEntity> aportes) {
-		this.aportes = aportes;
-	}
-
 	public TiposUsuario getIdTipoU() {
 		return idTipoU;
 	}

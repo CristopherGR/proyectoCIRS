@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="pagos")
 public class PagosEntity implements Serializable {
@@ -26,7 +25,7 @@ public class PagosEntity implements Serializable {
 	private float valor; 
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="idTipo")
+	@JoinColumn(name="idTipoPago")
 	private TiposPagos tipoPago;
 	
 	public int getIdPago() {

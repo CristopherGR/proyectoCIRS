@@ -24,7 +24,6 @@ public class TiposPagos implements Serializable {
 		return idTipo;
 	}
 	
-	
 	public void setIdTipo(int idTipo) {
 		this.idTipo = idTipo;
 	}

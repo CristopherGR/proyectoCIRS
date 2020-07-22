@@ -48,66 +48,87 @@ public class CreditosEntity implements Serializable {
 	@JoinTable(name="creditospagos", joinColumns=@JoinColumn(name="idCredito"), inverseJoinColumns=@JoinColumn(name="idPago"))
 	private List<PagosEntity> pagos;
 	
-	
-    public int getIdCredito() {
+
+	public int getIdCredito() {
 		return idCredito;
 	}
+
 	public void setIdCredito(int idCredito) {
 		this.idCredito = idCredito;
 	}
+
 	public TiposCreditos getIdTipo() {
 		return idTipo;
 	}
+
 	public void setIdTipo(TiposCreditos idTipo) {
 		this.idTipo = idTipo;
 	}
+
 	public EstadosCreditos getIdEstado() {
 		return idEstado;
 	}
+
 	public void setIdEstado(EstadosCreditos idEstado) {
 		this.idEstado = idEstado;
 	}
+
 	public Date getFechaCredito() {
 		return fechaCredito;
 	}
+
 	public void setFechaCredito(Date fechaCredito) {
 		this.fechaCredito = fechaCredito;
 	}
+
 	public float getValor() {
 		return valor;
 	}
+
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+
 	public int getCuotas() {
 		return cuotas;
 	}
+
 	public void setCuotas(int cuotas) {
 		this.cuotas = cuotas;
 	}
+
 	public int getCuotasPagadas() {
 		return cuotasPagadas;
 	}
+
 	public void setCuotasPagadas(int cuotasPagadas) {
 		this.cuotasPagadas = cuotasPagadas;
 	}
+
 	public float getInteres() {
 		return interes;
 	}
+
 	public void setInteres(float interes) {
 		this.interes = interes;
 	}
+
 	public float getTotalPagar() {
 		return totalPagar;
 	}
+
 	public void setTotalPagar(float totalPagar) {
 		this.totalPagar = totalPagar;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
    
 }

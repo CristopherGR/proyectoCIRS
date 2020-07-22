@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import e5.proyectoCIRSB.creditos.CreditosEntity;
 
 @Entity
-@Table(name="multas")
+@Table(name="creditos")
 public class MultasEntity {
 
 	@Id
@@ -25,15 +25,16 @@ public class MultasEntity {
 	private int idMulta;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="idTipo")	
+	@JoinColumn(name="idTipo")
 	private TiposMultas idTipo;
 	
 	private Date fechaMulta;
 	private float valor;
 	
-    @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(name="creditosmultas", joinColumns=@JoinColumn(name="idMulta"), inverseJoinColumns=@JoinColumn(name="idCredito"))
-	private List<CreditosEntity> credito; 	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="creditosmultas", joinColumns=@JoinColumn(name="idMulta"), inverseJoinColumns=@JoinColumn(name="idCredito"))
+	private List<CreditosEntity> credito;
+	
 	
 	public int getIdMulta() {
 		return idMulta;

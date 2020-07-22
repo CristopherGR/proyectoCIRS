@@ -58,4 +58,9 @@ public class GastoController {
 		gastoService.delete(id);
 	}
 	
+	@GetMapping("/gastos/tipos")
+	public List<TiposGastos> indexTipos(){
+		return gastoService.findAllTiposGasto();
+	} 
+	
 }
