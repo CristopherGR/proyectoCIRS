@@ -41,5 +41,11 @@ public class GastoServiceIm implements GastoService {
 		return (List<TiposGastos>) gastoModel.findAllTiposGasto();
 	}
 
+	@Override
+	public List<Gasto> findByValor(Float valor) {
+		// TODO Auto-generated method stub
+		return (List<Gasto>) gastoModel.findByValor(valor);
+	}
+
 	
 }

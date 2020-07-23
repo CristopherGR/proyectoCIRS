@@ -13,4 +13,6 @@ public interface GastoService {
 	public Gasto findById(Integer id); 
 	
 	public List<TiposGastos> findAllTiposGasto();
+	
+	public List<Gasto> findByValor(Float valor);
 }

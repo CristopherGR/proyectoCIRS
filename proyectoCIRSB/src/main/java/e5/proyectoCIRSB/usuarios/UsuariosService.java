@@ -11,5 +11,9 @@ public interface UsuariosService {
 	public UsuariosEntity save(UsuariosEntity usuario);
 	
 	public void delete(String ciUsuario); 
+	
+	public List<UsuariosEntity> findByAllCorreo(String correo);
+	
+	public List<UsuariosEntity> findByNombres(String nombres);
 
 }

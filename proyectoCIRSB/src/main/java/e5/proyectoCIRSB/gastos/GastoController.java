@@ -63,4 +63,9 @@ public class GastoController {
 		return gastoService.findAllTiposGasto();
 	} 
 	
+	@GetMapping("/gastos/valorMayor/{id}")
+	public List<Gasto> showValor(@PathVariable("id") Float valor) {
+		return gastoService.findByValor(valor);
+	}
+	
 }

@@ -28,7 +28,7 @@ public class UsuariosController {
 	}
 	
 	@GetMapping("/usuarios/{id}")
-	public UsuariosEntity show(@PathVariable String ci) {
+	public UsuariosEntity showById(@PathVariable String ci) {
 		return usuariosService.findById(ci);
 	}
 	
@@ -60,6 +60,16 @@ public class UsuariosController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable String ci) {
 		usuariosService.delete(ci);
+	}
+	
+	@GetMapping("/usuarios/correo/{id}")
+	public List<UsuariosEntity> showByCorreo(@PathVariable("id") String correo){
+		return usuariosService.findByAllCorreo(correo);
+	}
+	
+	@GetMapping("/usuarios/nombres/{id}")
+	public List<UsuariosEntity> showByNombres(@PathVariable("id") String nombres){
+		return usuariosService.findByNombres(nombres);
 	}
 
 }
