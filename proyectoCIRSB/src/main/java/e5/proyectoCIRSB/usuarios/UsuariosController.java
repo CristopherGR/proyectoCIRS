@@ -28,7 +28,7 @@ public class UsuariosController {
 	}
 	
 	@GetMapping("/usuarios/{id}")
-	public UsuariosEntity showById(@PathVariable String ci) {
+	public UsuariosEntity showById(@PathVariable("id") String ci) {
 		return usuariosService.findById(ci);
 	}
 	
