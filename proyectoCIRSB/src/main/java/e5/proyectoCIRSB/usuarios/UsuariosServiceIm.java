@@ -47,6 +47,12 @@ public class UsuariosServiceIm implements UsuariosService{
 		return (List<UsuariosEntity>) iUsuarios.findByNombres(nombres);
 	}
 
+	@Override
+	public List<UsuariosEntity> findByEstado() {
+		// TODO Auto-generated method stub
+		return (List<UsuariosEntity>) iUsuarios.findByEstado();
+	}
+
 
 	
 }

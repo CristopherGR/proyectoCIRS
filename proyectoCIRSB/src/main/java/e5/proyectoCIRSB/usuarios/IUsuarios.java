@@ -15,4 +15,9 @@ public interface IUsuarios extends CrudRepository <UsuariosEntity, String> {
 	
 	@Query("from UsuariosEntity u where u.nombres = ?1 ")
 	public List<UsuariosEntity> findByNombres(String nombres);
+	
+	@Query("from UsuariosEntity u where u.estado = 'pendiente' ")
+	public List<UsuariosEntity> findByEstado();
+	
+	
 }

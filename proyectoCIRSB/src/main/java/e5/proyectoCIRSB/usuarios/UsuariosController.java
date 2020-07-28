@@ -71,5 +71,10 @@ public class UsuariosController {
 	public List<UsuariosEntity> showByNombres(@PathVariable("id") String nombres){
 		return usuariosService.findByNombres(nombres);
 	}
+	
+	@GetMapping("/usuarios/estado")
+	public List<UsuariosEntity> showByEstado(){
+		return usuariosService.findByEstado();
+	}
 
 }
