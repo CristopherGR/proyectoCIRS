@@ -34,4 +34,10 @@ public class SolicitudesServiceIm implements SolicitudesService{
 		return iSolicitudes.findById(id).orElseThrow(null);
 	}
 
+	@Override
+	public List<SolicitudesEntity> finByEstado() {
+		// TODO Auto-generated method stub
+		return (List<SolicitudesEntity>) iSolicitudes.finByEstado();
+	}
+
 }

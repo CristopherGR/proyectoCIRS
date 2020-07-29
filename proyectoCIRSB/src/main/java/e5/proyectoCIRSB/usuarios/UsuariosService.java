@@ -16,4 +16,5 @@ public interface UsuariosService {
 	
 	public List<UsuariosEntity> findByNombres(String nombres);
 
+	public List<UsuariosEntity> findByEstado();
 }

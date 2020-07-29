@@ -26,13 +26,13 @@ public class UsuariosServiceIm implements UsuariosService{
 	@Override
 	public UsuariosEntity save(UsuariosEntity usuario) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuarios.save(usuario);
 	}
 
 	@Override
 	public void delete(String ciUsuario) {
 		// TODO Auto-generated method stub
-		
+		iUsuarios.deleteById(ciUsuario);
 	}
 
 	@Override
@@ -45,6 +45,12 @@ public class UsuariosServiceIm implements UsuariosService{
 	public List<UsuariosEntity> findByNombres(String nombres) {
 		// TODO Auto-generated method stub
 		return (List<UsuariosEntity>) iUsuarios.findByNombres(nombres);
+	}
+
+	@Override
+	public List<UsuariosEntity> findByEstado() {
+		// TODO Auto-generated method stub
+		return (List<UsuariosEntity>) iUsuarios.findByEstado();
 	}
 
 

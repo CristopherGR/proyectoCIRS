@@ -40,7 +40,7 @@ public class UsuariosController {
 	
 	@PostMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public UsuariosEntity update(@RequestBody UsuariosEntity usuario, @PathVariable String ci) {
+	public UsuariosEntity update(@RequestBody UsuariosEntity usuario, @PathVariable("id") String ci) {
 		UsuariosEntity usuarioActual = usuariosService.findById(ci); 
 		
 		usuarioActual.setIdTipoU(usuario.getIdTipoU());
@@ -58,7 +58,7 @@ public class UsuariosController {
 	
 	@DeleteMapping ("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable String ci) {
+	public void delete(@PathVariable("id") String ci) {
 		usuariosService.delete(ci);
 	}
 	
@@ -70,6 +70,11 @@ public class UsuariosController {
 	@GetMapping("/usuarios/nombres/{id}")
 	public List<UsuariosEntity> showByNombres(@PathVariable("id") String nombres){
 		return usuariosService.findByNombres(nombres);
+	}
+	
+	@GetMapping("/usuarios/estado")
+	public List<UsuariosEntity> showByEstado(){
+		return usuariosService.findByEstado();
 	}
 
 }

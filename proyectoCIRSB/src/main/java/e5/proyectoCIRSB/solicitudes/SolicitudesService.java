@@ -11,5 +11,7 @@ public interface SolicitudesService {
 	public void delete(Integer id); 
 	
 	public SolicitudesEntity findById(Integer id);
+	
+	public List<SolicitudesEntity> finByEstado ();
 
 }
