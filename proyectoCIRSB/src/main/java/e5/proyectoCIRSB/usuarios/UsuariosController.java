@@ -72,4 +72,9 @@ public class UsuariosController {
 		return usuariosService.findByNombres(nombres);
 	}
 
+	@GetMapping("/usuarios/tipos")
+	public List<TiposUsuario> showTipoUsuario(){
+		return usuariosService.findAllTipoUsuarios(); 
+	}
+	
 }

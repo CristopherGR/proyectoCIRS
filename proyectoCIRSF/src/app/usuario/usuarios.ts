@@ -1,3 +1,5 @@
+import {TipoUsuario} from './tipo-usuario'; 
+
 export class Usuarios {
     ciUsuario: string;
     nombres: string; 
@@ -6,4 +8,5 @@ export class Usuarios {
     direccion: string;
     telefono: string; 
     fechaNa: string;
+    idTipoU: TipoUsuario; 
 }

@@ -15,5 +15,7 @@ public interface UsuariosService {
 	public List<UsuariosEntity> findByAllCorreo(String correo);
 	
 	public List<UsuariosEntity> findByNombres(String nombres);
+	
+	public List<TiposUsuario> findAllTipoUsuarios(); 
 
 }

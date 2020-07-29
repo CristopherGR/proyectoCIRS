@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { FormusuarioComponent } from './usuario/formusuario.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: '' , redirectTo: '/inicio', pathMatch: 'full'},
   {path: 'inicio', component: InicioComponent},
   {path: 'usuarios', component: UsuarioComponent},
+  {path: 'usuarios/form', component: FormusuarioComponent},
 ];
 
 
@@ -28,7 +30,8 @@ const routes: Routes = [
     HeaderComponent,
     MenuComponent,
     InicioComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    FormusuarioComponent
   ],
   imports: [
     BrowserModule,

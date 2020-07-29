@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Usuarios} from './Usuarios'; 
+import {TipoUsuario} from './tipo-usuario'; 
 import {Observable} from 'rxjs';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http'; 
@@ -20,12 +21,17 @@ export class UsuarioService {
      return this.http.get<Usuarios[]>(this.url);  // se hace un cast de GASTO 
   }
 
-  create (gasto: Usuarios) : Observable <Usuarios>{
-    return this.http.post<Usuarios>(this.url, gasto, {headers: this.httpHeaders}); 
+  create (usuarios: Usuarios) : Observable <Usuarios>{
+    return this.http.post<Usuarios>(this.url, usuarios, {headers: this.httpHeaders}); 
   }
     
 
-  searchg(valor: number): Observable<Usuarios[]>{
-    return this.http.get<Usuarios[]>(`${this.url}/valorMayor/${valor}`);
+  searchg(cedula: string): Observable<Usuarios[]>{
+    return this.http.get<Usuarios[]>(`${this.url}/nombres/${cedula}`);
+  }
+
+
+  getTipoUsuario(): Observable <TipoUsuario[]>{
+    return this.http.get<TipoUsuario[]>(this.url + '/tipos');
   }
 }
