@@ -26,13 +26,13 @@ public class UsuariosServiceIm implements UsuariosService{
 	@Override
 	public UsuariosEntity save(UsuariosEntity usuario) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuarios.save(usuario);
 	}
 
 	@Override
 	public void delete(String ciUsuario) {
 		// TODO Auto-generated method stub
-		
+		iUsuarios.deleteById(ciUsuario);
 	}
 
 	@Override
