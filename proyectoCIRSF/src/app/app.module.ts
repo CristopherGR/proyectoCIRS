@@ -12,6 +12,13 @@ import { MenuComponent } from './menu/menu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { FormusuarioComponent } from './usuario/formusuario.component';
+import { CreditoComponent } from './credito/credito.component';
+import { AporteComponent } from './aporte/aporte.component';
+import { MultaComponent } from './multa/multa.component';
+import { SolicitudComponent } from './solicitud/solicitud.component';
+import { PagoComponent } from './pago/pago.component';
+import { GastoComponent } from './gasto/gasto.component';
+import { FormgastoComponent } from './gasto/formgasto.component';
 
 
 
@@ -20,6 +27,8 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'usuarios', component: UsuarioComponent},
   {path: 'usuarios/form', component: FormusuarioComponent},
+  {path: 'gastos', component:GastoComponent},
+  {path: 'gasto/form', component:FormgastoComponent},
 ];
 
 
@@ -31,7 +40,14 @@ const routes: Routes = [
     MenuComponent,
     InicioComponent,
     UsuarioComponent,
-    FormusuarioComponent
+    FormusuarioComponent,
+    CreditoComponent,
+    AporteComponent,
+    MultaComponent,
+    SolicitudComponent,
+    PagoComponent,
+    GastoComponent,
+    FormgastoComponent
   ],
   imports: [
     BrowserModule,

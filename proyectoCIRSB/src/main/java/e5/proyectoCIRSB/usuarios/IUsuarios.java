@@ -18,4 +18,10 @@ public interface IUsuarios extends CrudRepository <UsuariosEntity, String> {
 	
 	@Query("from TiposUsuario")
 	public List<TiposUsuario> findAllTipoGastos(); 
+	
+	@Query("from UsuariosEntity u where u.idTipoU = 1")
+	public List<UsuariosEntity> findAdmin(); 
+	
+	@Query("from UsuariosEntity u where  u.nombres =?1 and u.idTipoU = 1")
+	public List<UsuariosEntity> findAdminNom(String nombres); 
 }

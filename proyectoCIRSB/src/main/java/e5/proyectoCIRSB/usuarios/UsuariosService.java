@@ -17,5 +17,9 @@ public interface UsuariosService {
 	public List<UsuariosEntity> findByNombres(String nombres);
 	
 	public List<TiposUsuario> findAllTipoUsuarios(); 
+	
+	public List<UsuariosEntity> findAdmin();
+	
+	public List<UsuariosEntity> findAdminNom(String nombres); 
 
 }

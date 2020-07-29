@@ -22,7 +22,8 @@ export class FormusuarioComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.getTipoUsuario();
+    this.getTipoUsuario(); 
+    
   }
 
   getTipoUsuario(){

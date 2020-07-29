@@ -25,13 +25,15 @@ export class UsuarioService {
     return this.http.post<Usuarios>(this.url, usuarios, {headers: this.httpHeaders}); 
   }
     
-
   searchg(cedula: string): Observable<Usuarios[]>{
     return this.http.get<Usuarios[]>(`${this.url}/nombres/${cedula}`);
   }
 
-
   getTipoUsuario(): Observable <TipoUsuario[]>{
     return this.http.get<TipoUsuario[]>(this.url + '/tipos');
+  }
+
+  getUsuarioAdmin(): Observable <Usuarios[]> {
+    return this.http.get<Usuarios[]>(this.url + '/admin');  // se hace un cast de USUARIO
   }
 }

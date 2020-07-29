@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from './Usuarios'; 
 import {UsuarioService} from './usuario.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -15,11 +15,10 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuarios[];
   cantidad: string; 
   
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
-
-    this.showAll();
+      this.showAll(); 
   }
 
   filtro() {
@@ -29,7 +28,6 @@ export class UsuarioComponent implements OnInit {
     }else {
       this.searchu();
     }
-    
   }
 
   showAll(){
@@ -40,6 +38,17 @@ export class UsuarioComponent implements OnInit {
       this.usuarios = usuarios  }
     );
   }
+
+  showAdmin(){
+    this.usuarioService.getUsuarioAdmin().subscribe(
+      usuarios => {
+        console.log(usuarios);
+      
+        this.usuarios = usuarios
+      }
+    ); 
+  }
+
  
   searchu(){
     this.usuarioService.searchg(this.nombre).subscribe(

@@ -77,4 +77,15 @@ public class UsuariosController {
 		return usuariosService.findAllTipoUsuarios(); 
 	}
 	
+	@GetMapping("/usuarios/admin")
+	public List<UsuariosEntity> showAdmin(){
+		return usuariosService.findAdmin(); 
+	}
+	
+	@GetMapping("/usuarios/nomadmin/{id}")
+	public List<UsuariosEntity> showAdminNom(@PathVariable("id") String nombres){
+		return usuariosService.findAdminNom(nombres); 
+	}
+	
+	
 }
