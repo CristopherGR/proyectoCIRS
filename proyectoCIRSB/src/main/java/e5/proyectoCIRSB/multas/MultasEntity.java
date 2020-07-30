@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import e5.proyectoCIRSB.creditos.CreditosEntity;
 
 @Entity
-@Table(name="creditos")
+@Table(name="multas")
 public class MultasEntity {
 
 	@Id
