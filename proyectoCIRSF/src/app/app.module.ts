@@ -30,6 +30,7 @@ const routes: Routes = [
   {path: 'usuarios/form/:id', component: FormusuarioComponent},
   {path: 'gastos', component:GastoComponent},
   {path: 'gasto/form', component:FormgastoComponent},
+  {path: 'creditos', component: CreditoComponent}
 ];
 
 

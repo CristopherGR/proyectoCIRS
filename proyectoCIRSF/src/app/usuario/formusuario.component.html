@@ -6,12 +6,8 @@
         
         <div class="form-group row" >
             <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
-            <div class="col-sm-6"  *ngIf="!usuarios.ciUsuario else bloquear">
+            <div class="col-sm-6" >
                 <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
-                
-                <ng-template #bloquear>
-                    <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" value={{usuarios.ciUsuario}} disabled >
-                </ng-template>
             </div>
 
         </div>

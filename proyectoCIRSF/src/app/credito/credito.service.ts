@@ -20,12 +20,12 @@ export class CreditoService {
     return this.http.get<Creditos[]>(this.url);  // se hace un cast de USUARIO
   }
 
-  searchGasto(valor:number): Observable<Creditos[]>{
+ searchGasto(valor:number): Observable<Creditos[]>{
     return this.http.get<Creditos[]>(`${this.url}/valor/${valor}`);
   }
   
   searchGastoTipo(nombre:string): Observable <Creditos>{
-    return this.http.get<Creditos[]>(`${this.url}/nomadmin/${nombre}`);
+    return this.http.get<Creditos>(`${this.url}/tipo/${nombre}`);
   }
 
   

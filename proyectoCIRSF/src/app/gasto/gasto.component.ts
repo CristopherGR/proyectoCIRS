@@ -13,7 +13,7 @@ export class GastoComponent implements OnInit {
   usuarios: Usuarios[]; 
   
   nombre: string; 
-  valor: number; 
+  valor: string; 
 
   constructor(private gastoService: GastoService) { }
 
