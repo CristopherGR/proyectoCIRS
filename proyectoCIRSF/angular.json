@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "proyectoCIRSF"
+    }
+  },
+  "defaultProject": "proyectoCIRSF",
+  "cli": {
+    "analytics": "501f80d3-1498-4282-a363-18ed4a376125"
+  }
 }

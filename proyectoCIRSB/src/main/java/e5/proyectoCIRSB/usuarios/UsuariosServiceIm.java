@@ -48,6 +48,22 @@ public class UsuariosServiceIm implements UsuariosService{
 	}
 
 	@Override
+	public List<TiposUsuario> findAllTipoUsuarios() {
+		// TODO Auto-generated method stub
+		return (List<TiposUsuario>) iUsuarios.findAllTipoGastos();
+	}
+
+	@Override
+	public List<UsuariosEntity> findAdmin(){
+		// TODO Auto-generated method stub
+		return (List<UsuariosEntity>) iUsuarios.findAdmin();
+	}
+
+	@Override
+	public List<UsuariosEntity> findAdminNom(String nombres) {
+		// TODO Auto-generated method stub
+		return (List<UsuariosEntity>) iUsuarios.findAdminNom(nombres);
+	}
 	public List<UsuariosEntity> findByEstado() {
 		// TODO Auto-generated method stub
 		return (List<UsuariosEntity>) iUsuarios.findByEstado();
