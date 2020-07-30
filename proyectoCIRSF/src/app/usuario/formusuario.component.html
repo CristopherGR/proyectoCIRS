@@ -2,14 +2,22 @@
     <div class="card-header">{{title}}</div>
     <div class="card-body"></div>
 
-    <form [formGroup]="form" (ngSubmit) = "creat()">
+    <form [formGroup]="form">
         
-        <div class="form-group row">
+        <div class="form-group row"  *ngIf="!usuarios.ciUsuario else cedula">
             <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" formControlName="numCedula">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" formControlName="numCedula" >
+                
             </div>
+
+            <ng-template #cedula>
+                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" value={{usuarios.ciUsuario}} readonly="readonly" >
+            </ng-template>
+           
         </div>
+
+        
 
         <div class="form-group row">
             <label for="nombres" class="col form-label col-sm-2">Nombre</label>
@@ -25,12 +33,12 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <!--<div class="form-group row">
             <label for="fechaNa" class="col form-label col-sm-2">Fecha de nacimiento</label>
             <div class="col-sm-6">
                 <input type="date" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa" formControlName="fechaNa">  
             </div>
-        </div>
+        </div>-->
 
         <div class="form-group row">
             <label for="direccion" class="col form-label col-sm-2">Dirección</label>
@@ -70,6 +78,7 @@
                 <ng-template #block>
                     <button class="btn btn-primary" role="button" (click)='updateU()'>Editar</button>
                 </ng-template>
+
             </div>
         </div>
         
