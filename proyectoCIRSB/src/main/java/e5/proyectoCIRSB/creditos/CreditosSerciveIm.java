@@ -35,4 +35,16 @@ public class CreditosSerciveIm implements CreditosService{
 		return iCreditos.findById(idCredito).orElseThrow(null);
 	}
 
+	@Override
+	public List<CreditosEntity> findByValor(Float valor) {
+		// TODO Auto-generated method stub
+		return (List<CreditosEntity>) iCreditos.findByValor(valor);
+	}
+
+	@Override
+	public List<CreditosEntity> findByTipo(Integer tipo) {
+		// TODO Auto-generated method stub
+		return (List<CreditosEntity>) iCreditos.findByTipo(tipo);
+	}
+
 }
