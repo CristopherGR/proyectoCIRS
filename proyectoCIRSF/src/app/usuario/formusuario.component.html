@@ -4,17 +4,16 @@
 
     <form [formGroup]="form">
         
-        <div class="form-group row"  *ngIf="!usuarios.ciUsuario else cedula">
+        <div class="form-group row" >
             <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" formControlName="numCedula" >
+            <div class="col-sm-6"  *ngIf="!usuarios.ciUsuario else bloquear">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
                 
+                <ng-template #bloquear>
+                    <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" value={{usuarios.ciUsuario}} disabled >
+                </ng-template>
             </div>
 
-            <ng-template #cedula>
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" value={{usuarios.ciUsuario}} readonly="readonly" >
-            </ng-template>
-           
         </div>
 
         
