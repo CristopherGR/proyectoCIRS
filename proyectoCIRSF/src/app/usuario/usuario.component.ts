@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class UsuarioComponent implements OnInit {
 
   
-  nombre: string;
-  usuarios: Usuarios[];
+  public nombre: string;
+  public usuarios: Usuarios[];
   cantidad: string; 
   
   constructor(private usuarioService: UsuarioService, private router: Router) { }
@@ -56,5 +56,8 @@ export class UsuarioComponent implements OnInit {
          this.usuarios=respuesta }
     )
   }
+
+  
+  
 
 }

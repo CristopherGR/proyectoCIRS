@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsuarioService } from './usuario.service';
 import { TipoUsuario } from './tipo-usuario';
@@ -17,13 +17,13 @@ export class FormusuarioComponent implements OnInit {
   public tipoUsuario: TipoUsuario[]; 
   public usuarios: Usuarios = new Usuarios(); 
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private router: Router, private activated: ActivatedRoute) { }
   
   
   
   ngOnInit(): void {
     this.getTipoUsuario(); 
-    
+    this.cargar();
   }
 
   getTipoUsuario(){
@@ -45,4 +45,23 @@ export class FormusuarioComponent implements OnInit {
     return o1==null || o2==null ? false: o1.idTipoU==o2.idTipoU; 
   }
 
+  cargar(){
+    this.activated.params.subscribe(parametros => {
+      let id = parametros['id']
+      if(id){
+        this.usuarioService.getUsuarioId(id).subscribe(
+          (usuarios) => this.usuarios = usuarios
+        )
+      }
+    });
+  }
+
+  updateU(){
+    this.usuarioService.update(this.usuarios).subscribe(
+      usuarios =>{
+        this.router.navigate(['/usuarios'])
+        swal.fire('Dato actualizado', `Dato actualizado ${usuarios.nombres} con éxito`, 'success')
+      } 
+    )
+  }
 }

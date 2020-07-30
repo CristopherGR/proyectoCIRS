@@ -36,4 +36,12 @@ export class UsuarioService {
   getUsuarioAdmin(): Observable <Usuarios[]> {
     return this.http.get<Usuarios[]>(this.url + '/admin');  // se hace un cast de USUARIO
   }
+
+  getUsuarioId(id): Observable<Usuarios>{
+    return this.http.get<Usuarios>(`${this.url}/${id}`);
+  }
+
+  update(usuarios: Usuarios): Observable<Usuarios>{
+    return this.http.put<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios);
+  }
 }

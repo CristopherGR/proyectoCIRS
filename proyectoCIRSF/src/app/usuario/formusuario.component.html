@@ -2,7 +2,7 @@
     <div class="card-header">{{title}}</div>
     <div class="card-body"></div>
 
-    <form (ngSubmit) = "creat()">
+    <form >
         
         <div class="form-group row">
             <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
@@ -28,7 +28,7 @@
         <div class="form-group row">
             <label for="fechaNa" class="col form-label col-sm-2">Fecha de nacimiento</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa" requerid>  
+                <input type="text" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa"  requerid>  
             </div>
         </div>
 
@@ -65,7 +65,11 @@
 
         <div class="form-group row">
             <div class="col-sm-6">
-                <button class="btn btn-primary" role="button">Crear</button>
+                <button class="btn btn-primary" role="button" (click)='creat()' *ngIf="!usuarios.ciUsuario else block" >Crear</button>
+           
+                <ng-template #block>
+                    <button class="btn btn-primary" role="button" (click)='updateU()'>Editar</button>
+                </ng-template>
             </div>
         </div>
         

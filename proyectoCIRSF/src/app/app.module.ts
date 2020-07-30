@@ -27,6 +27,7 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'usuarios', component: UsuarioComponent},
   {path: 'usuarios/form', component: FormusuarioComponent},
+  {path: 'usuarios/form/:id', component: FormusuarioComponent},
   {path: 'gastos', component:GastoComponent},
   {path: 'gasto/form', component:FormgastoComponent},
 ];
