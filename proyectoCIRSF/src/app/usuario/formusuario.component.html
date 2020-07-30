@@ -4,28 +4,12 @@
 
     <form [formGroup]="form">
         
-        <div class="form-group row">
+        <div class="form-group row" >
             <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" formControlName="numCedula" >
-                
+            <div class="col-sm-6" >
+                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
             </div>
 
-            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
-                <p *ngIf="form.get('numCedula').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
-                <p *ngIf="form.get('numCedula').hasError('minlength')">
-                  La cedula ingresada es inferior a 10 digitos
-                </p>
-            </div>
-            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
-                <p *ngIf="form.get('numCedula').hasError('maxlength')">
-                  La cedula ingresada no debe contener mas de 10 digitos
-                </p>
-            </div>
         </div>
 
         

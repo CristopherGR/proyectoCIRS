@@ -42,9 +42,11 @@ public class CreditosSerciveIm implements CreditosService{
 	}
 
 	@Override
-	public List<CreditosEntity> findByTipo(Integer tipo) {
+	public List<CreditosEntity> findByTipo(String tipo) {
 		// TODO Auto-generated method stub
 		return (List<CreditosEntity>) iCreditos.findByTipo(tipo);
 	}
+
+	
 
 }

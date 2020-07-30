@@ -14,5 +14,5 @@ public interface CreditosService {
 	
 	public List<CreditosEntity> findByValor(Float valor); 
 	
-	public List<CreditosEntity> findByTipo(Integer tipo);
+	public List<CreditosEntity> findByTipo(String tipo);
 }

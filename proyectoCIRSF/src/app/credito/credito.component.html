@@ -1,1 +1,52 @@
-<p>credito works!</p>
+<div class="card">
+    <div class="card-header">
+      LISTA DE CREDITOS
+    </div>
+    <div class="card-body">
+           
+                    
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"  (click)="filtro()" >Buscar</button>
+                      </span>
+                      <input type="text" class="form-control"  [(ngModel)]="valor">
+                    </div>
+                  </div>
+            </div>    
+    
+     
+
+        
+        <table class="table table-bordered table-stripped">
+            <thead class="thead-dark">
+                <tr>
+                   
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Cuotas</th>
+                    <th scope="col">Cuotas Pagadas</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Total a Pagar</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor = "let item of creditos ">
+                    
+                    <td>{{item.idTipo.descripcion }}</td>
+                    <td>{{item.interes}}</td>
+                    <td>{{item.cuotas}}</td>
+                    <td>{{item.cuotasPagadas}}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td>{{item.totalPagar}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+  </div>
+

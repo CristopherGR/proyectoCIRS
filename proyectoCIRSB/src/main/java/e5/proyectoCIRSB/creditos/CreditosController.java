@@ -69,7 +69,7 @@ public class CreditosController {
 	}
 	
 	@GetMapping ("/creditos/tipo/{id}")
-	public List<CreditosEntity> showByTipo(@PathVariable("id") Integer tipo) {
+	public List<CreditosEntity> showByTipo(@PathVariable("id") String tipo) {
 		return creditosService.findByTipo(tipo);
 	}
 	
