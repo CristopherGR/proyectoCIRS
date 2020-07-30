@@ -54,6 +54,7 @@ const routes: Routes = [
     HttpClientModule, 
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
