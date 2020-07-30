@@ -75,6 +75,11 @@
                   Es un campo requerido
                 </p>
             </div>
+            <div *ngIf="form.get('correo').errors && form.get('correo').touched">
+                <p *ngIf="form.get('correo').hasError('email')">
+                  No es un email valido
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
