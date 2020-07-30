@@ -59,8 +59,18 @@ public class CreditosController {
 	
 	@DeleteMapping ("/creditos/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable("id") Integer id) {
 		creditosService.delete(id);
+	}
+	
+	@GetMapping ("/creditos/valor/{id}")
+	public List<CreditosEntity> showByValor(@PathVariable("id") Float valor) {
+		return creditosService.findByValor(valor);
+	}
+	
+	@GetMapping ("/creditos/tipo/{id}")
+	public List<CreditosEntity> showByTipo(@PathVariable("id") Integer tipo) {
+		return creditosService.findByTipo(tipo);
 	}
 	
 }
