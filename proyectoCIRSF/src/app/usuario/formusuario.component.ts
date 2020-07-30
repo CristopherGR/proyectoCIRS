@@ -39,7 +39,7 @@ export class FormusuarioComponent implements OnInit {
       fechaNa: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required], Validators.maxLength(10)],
+      telefono: ['', [Validators.required], Validators.minLength(10), Validators.maxLength(10)],
       idTipoU: ['', [Validators.required]]
     });
 

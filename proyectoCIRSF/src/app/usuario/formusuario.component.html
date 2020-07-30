@@ -15,6 +15,16 @@
                   Es un campo requerido
                 </p>
             </div>
+            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
+                <p *ngIf="form.get('numCedula').hasError('minlength')">
+                  La cedula ingresada es inferior a 10 digitos
+                </p>
+            </div>
+            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
+                <p *ngIf="form.get('numCedula').hasError('maxlength')">
+                  La cedula ingresada no debe contener mas de 10 digitos
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -90,6 +100,16 @@
             <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
                 <p *ngIf="form.get('telefono').hasError('required')">
                   Es un campo requerido
+                </p>
+            </div>
+            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                <p *ngIf="form.get('telefono').hasError('minlength')">
+                  El numero ingresado es inferior a 10 digitos
+                </p>
+            </div>
+            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                <p *ngIf="form.get('telefono').hasError('maxlength')">
+                  El numero ingresado no debe contener mas de 10 digitos
                 </p>
             </div>
         </div>
