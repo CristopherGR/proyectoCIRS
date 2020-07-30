@@ -12,4 +12,7 @@ public interface CreditosService {
 	
 	public void delete(Integer idCredito); 
 	
+	public List<CreditosEntity> findByValor(Float valor); 
+	
+	public List<CreditosEntity> findByTipo(Integer tipo);
 }
