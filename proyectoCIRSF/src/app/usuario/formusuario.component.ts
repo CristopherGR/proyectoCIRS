@@ -21,7 +21,7 @@ export class FormusuarioComponent implements OnInit {
   
   form: FormGroup;
 
-  constructor(private usuarioService: UsuarioService, private router: Router, private activated: ActivatedRoute) {
+  constructor(private usuarioService: UsuarioService, private router: Router, private activated: ActivatedRoute, private formBuilder:FormBuilder) {
     this.buildForm();
    }
   
@@ -32,15 +32,15 @@ export class FormusuarioComponent implements OnInit {
     this.cargar();
   }
   private buildForm(){
-    this.form = new FormGroup({
-      numCedula: new FormControl('',[Validators.required, Validators.maxLength(10)]),
-      nombres: new FormControl('', [Validators.required]),
-      apellidos: new FormControl('', [Validators.required]),
-      fechaNa: new FormControl('', [Validators.required]),
-      direccion: new FormControl('', [Validators.required]),
-      correo: new FormControl('', [Validators.required]),
-      telefono: new FormControl('', [Validators.required]),
-      idTipoU: new FormControl('', [Validators.required])
+    this.form = this.formBuilder.group({
+      numCedula: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      nombres: ['', [Validators.required]],
+      apellidos: ['', [Validators.required]],
+      fechaNa: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
+      telefono: ['', [Validators.required], Validators.maxLength(10)],
+      idTipoU: ['', [Validators.required]]
     });
 
     this.form.valueChanges

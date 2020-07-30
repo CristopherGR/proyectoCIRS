@@ -9,12 +9,23 @@
             <div class="col-sm-6">
                 <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula" formControlName="numCedula">
             </div>
+
+            <div *ngIf="form.get('numCedula').errors && form.get('numCedula').touched">
+                <p *ngIf="form.get('numCedula').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
             <label for="nombres" class="col form-label col-sm-2">Nombre</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" [(ngModel)]="usuarios.nombres" name="nombres" formControlName="nombres">
+            </div>
+            <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
+                <p *ngIf="form.get('nombres').hasError('required')">
+                  Es un campo requerido
+                </p>
             </div>
         </div>
 
@@ -23,12 +34,22 @@
             <div class="col-sm-6">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.apellidos" name="apellidos" formControlName="apellidos">  
             </div>
+            <div *ngIf="form.get('apellidos').errors && form.get('apellidos').touched">
+                <p *ngIf="form.get('apellidos').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
             <label for="fechaNa" class="col form-label col-sm-2">Fecha de nacimiento</label>
             <div class="col-sm-6">
                 <input type="date" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa" formControlName="fechaNa">  
+            </div>
+            <div *ngIf="form.get('fechaNa').errors && form.get('fechaNa').touched">
+                <p *ngIf="form.get('fechaNa').hasError('required')">
+                  Es un campo requerido
+                </p>
             </div>
         </div>
 
@@ -37,6 +58,11 @@
             <div class="col-sm-6">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.direccion"name="direccion" formControlName="direccion">  
             </div>
+            <div *ngIf="form.get('direccion').errors && form.get('direccion').touched">
+                <p *ngIf="form.get('direccion').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -44,12 +70,22 @@
             <div class="col-sm-6">
                 <input type="email" class="form-control"  [(ngModel)]="usuarios.correo" name="correo" formControlName="correo">  
             </div>
+            <div *ngIf="form.get('correo').errors && form.get('correo').touched">
+                <p *ngIf="form.get('correo').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
         </div>
 
         <div class="form-group row">
             <label for="telefono" class="col form-label col-sm-2">Telefono</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.telefono" name="telefono" formControlName="telefono">  
+            </div>
+            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                <p *ngIf="form.get('telefono').hasError('required')">
+                  Es un campo requerido
+                </p>
             </div>
         </div>
 
@@ -60,15 +96,20 @@
                     <option [ngValue]="tipoUsuario" *ngFor="let tipoUsuario of tipoUsuario">{{tipoUsuario.descripcion}}</option>
                 </select>
             </div>
+            <div *ngIf="form.get('idTipoU').errors && form.get('idTipoU').touched">
+                <p *ngIf="form.get('idTipoU').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
         </div>
 
 
         <div class="form-group row">
             <div class="col-sm-6">
-                <button class="btn btn-primary" role="button" (click)='creat()' *ngIf="!usuarios.ciUsuario else block" >Crear</button>
+                <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='creat()' *ngIf="!usuarios.ciUsuario else block" >Crear</button>
            
                 <ng-template #block>
-                    <button class="btn btn-primary" role="button" (click)='updateU()'>Editar</button>
+                    <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='updateU()'>Editar</button>
                 </ng-template>
             </div>
         </div>

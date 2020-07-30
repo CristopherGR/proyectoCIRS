@@ -42,6 +42,6 @@ export class UsuarioService {
   }
 
   update(usuarios: Usuarios): Observable<Usuarios>{
-    return this.http.put<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios);
+    return this.http.post<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios);
   }
 }
