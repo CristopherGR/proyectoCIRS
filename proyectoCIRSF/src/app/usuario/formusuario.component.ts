@@ -31,6 +31,8 @@ export class FormusuarioComponent implements OnInit {
     this.getTipoUsuario(); 
     this.cargar();
   }
+
+  
   private buildForm(){
     this.form = new FormGroup({
       numCedula: new FormControl('',[Validators.required, Validators.maxLength(10)]),

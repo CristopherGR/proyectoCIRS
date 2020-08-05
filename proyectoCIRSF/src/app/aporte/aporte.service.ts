@@ -22,8 +22,12 @@ export class AporteService {
     return this.http.get<Aportes[]>(this.url); 
   }
 
-  updateMulta(aportes: Aportes): Observable<Aportes>{
+  updateAporte(aportes: Aportes): Observable<Aportes>{
     return this.http.put<Aportes>(`${this.url}/${aportes.idAporte}`, aportes); 
+  }
+
+  getAporteId(id): Observable<Aportes>{
+    return this.http.get<Aportes>(`${this.url}/${id}`)
   }
 
 }

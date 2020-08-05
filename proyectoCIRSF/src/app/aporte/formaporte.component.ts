@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Aportes} from './aportes';
 import {AporteService} from './aporte.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 
 @Component({
@@ -15,10 +15,11 @@ export class FormaporteComponent implements OnInit {
   aporte: Aportes = new Aportes();  
  
  
-   constructor(private aporteService: AporteService, private router: Router) { }
+   constructor(private aporteService: AporteService, private router: Router, private activated:ActivatedRoute) { }
    
  
    ngOnInit(): void {
+     this.cargar()
    }
  
    public creat(){
@@ -28,5 +29,25 @@ export class FormaporteComponent implements OnInit {
       }
      );
    }
+
+   public cargar(){
+    this.activated.params.subscribe(idaporte => {
+      let id = idaporte['id']
+      if(id){
+        this.aporteService.getAporteId(id).subscribe(
+          (aporte) => this.aporte = aporte
+        )
+      }
+    });
+  }
+
+  public updateU(){
+    this.aporteService.updateAporte(this.aporte).subscribe(
+      aporte =>{
+        this.router.navigate(['/aporte'])
+        swal.fire('Dato actualizado', `Dato actualizado ${aporte.idAporte} con éxito`, 'success')
+      } 
+    )
+  }
 
 }
