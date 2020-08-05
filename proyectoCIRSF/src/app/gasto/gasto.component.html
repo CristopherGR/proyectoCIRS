@@ -11,7 +11,7 @@
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button"  (click)="filtro()" >Buscar</button>
                   </span>
-                  <input type="text" class="form-control"  [(ngModel)]="nombre">
+                  <input type="text" class="form-control"  [(ngModel)]="valor">
                 </div>
               </div>
         </div>
@@ -31,14 +31,14 @@
             </thead>
 
             <tbody>
-                <tr *ngFor = "let item of usuarios ">
+                <tr *ngFor = "let item of usuario ">
                     
-                    <td>{{item.ciUsuario }}</td>
-                    <td>{{item.nombres | titlecase}}</td>
-                    <td>{{item.apellidos | titlecase}}</td>
-                    <td>{{item.correo}}</td>
-                    <td>{{item.direccion}}</td>
-                    <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/gasto/form']">Ingresar Gasto</button></td>
+                  <td>{{item.ciUsuario }}</td>
+                  <td>{{item.nombres | titlecase}}</td>
+                  <td>{{item.apellidos | titlecase}}</td>
+                  <td>{{item.correo}}</td>
+                  <td>{{item.direccion}}</td>
+                  <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/gasto/form']">Ingresar Gasto</button></td>
                 </tr>
             </tbody>
         </table>

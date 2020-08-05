@@ -60,9 +60,9 @@ export class FormusuarioComponent implements OnInit {
 
   creat(){
     this.usuarioService.create(this.usuarios).subscribe(usuarios => {
-      console.log(this.usuarios)
+      console.log(usuarios)
       this.router.navigate(['/usuarios'])
-      swal.fire('Ingreso de datos', `Usuario creado con éxito!`, 'success')
+      swal.fire('Ingreso de datos', `Usuario ${usuarios.nombres} creado con éxito!`, 'success')
     }
     );
   }

@@ -41,7 +41,7 @@ public class MultasController {
 	
 	@PostMapping("/multas/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public MultasEntity update(@RequestBody MultasEntity multa, @PathVariable Integer id) {
+	public MultasEntity update(@RequestBody MultasEntity multa, @PathVariable("id")  Integer id) {
 		MultasEntity multaActual = multaService.findById(id); 
 		
 		multaActual.setIdTipo(multa.getIdTipo());

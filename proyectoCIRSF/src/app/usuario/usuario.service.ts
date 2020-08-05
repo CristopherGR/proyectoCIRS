@@ -42,6 +42,10 @@ export class UsuarioService {
   }
 
   update(usuarios: Usuarios): Observable<Usuarios>{
-    return this.http.post<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios, {headers:this.httpHeaders});
+    return this.http.post<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios);
+  }
+
+  searchUsuario(nombre:string): Observable <Usuarios[]>{
+    return this.http.get<Usuarios[]>(`${this.url}/nomadmin/${nombre}`);
   }
 }

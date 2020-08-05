@@ -11,7 +11,7 @@ import { TipoGasto } from './tipogasto';
 })
 export class GastoService {
 
-  private url: string = 'http://localhost:8030/api/usuarios/'; 
+  private url: string = 'http://localhost:8030/api/usuarios'; 
   private urlg: string = 'http://localhost:8030/api/gastos';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
@@ -29,8 +29,9 @@ export class GastoService {
     return this.http.get<Gasto[]>(this.urlg); 
   }
 
-  searchGasto(valor:number): Observable<Gasto[]>{
-    return this.http.get<Gasto[]>(`${this.urlg}/valorMayor/${valor}`);
+  searchGasto(valor:string): Observable<Gasto[]>{
+    let valores = Number(valor); 
+    return this.http.get<Gasto[]>(`${this.urlg}/valorMayor/${valores}`);
   }
 
   create (gastos: Gasto) : Observable <Gasto>{
