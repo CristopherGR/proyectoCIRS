@@ -19,6 +19,8 @@ import { SolicitudComponent } from './solicitud/solicitud.component';
 import { PagoComponent } from './pago/pago.component';
 import { GastoComponent } from './gasto/gasto.component';
 import { FormgastoComponent } from './gasto/formgasto.component';
+import { FormaporteComponent } from './aporte/formaporte.component';
+import { FormultaComponent } from './multa/formulta.component';
 
 
 
@@ -30,7 +32,10 @@ const routes: Routes = [
   {path: 'usuarios/form/:id', component: FormusuarioComponent},
   {path: 'gastos', component:GastoComponent},
   {path: 'gasto/form', component:FormgastoComponent},
-  {path: 'creditos', component: CreditoComponent}
+  {path: 'creditos', component: CreditoComponent},
+  {path: 'multas/form', component: FormultaComponent},
+  {path: 'aporte', component: AporteComponent},
+  {path: 'aporte/form', component: FormaporteComponent}
 ];
 
 
@@ -49,14 +54,17 @@ const routes: Routes = [
     SolicitudComponent,
     PagoComponent,
     GastoComponent,
-    FormgastoComponent
+    FormgastoComponent,
+    FormaporteComponent,
+    FormultaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
