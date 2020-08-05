@@ -45,10 +45,11 @@ export class CreditoComponent implements OnInit {
     this.creditoService.searchGasto(valors).subscribe(
       creditos => {
         if(creditos === []){
-          this.creditos = creditos
-        }else{
           console.log(creditos)
-          swal.fire('Aviso', 'No se encontro ninguna credito', 'error')
+          swal.fire('Aviso', 'No se encontro ningun credito', 'error')
+          this.creditos = creditos
+        }
+        else{
           this.creditos = creditos
         }
       }

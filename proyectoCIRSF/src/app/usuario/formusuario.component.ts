@@ -31,6 +31,8 @@ export class FormusuarioComponent implements OnInit {
     this.getTipoUsuario(); 
     this.cargar();
   }
+
+  
   private buildForm(){
     this.form = this.formBuilder.group({
       numCedula: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
@@ -60,9 +62,9 @@ export class FormusuarioComponent implements OnInit {
 
   creat(){
     this.usuarioService.create(this.usuarios).subscribe(usuarios => {
-      console.log(this.usuarios)
+      console.log(usuarios)
       this.router.navigate(['/usuarios'])
-      swal.fire('Ingreso de datos', `Usuario creado con éxito!`, 'success')
+      swal.fire('Ingreso de datos', `Usuario ${usuarios.nombres} creado con éxito!`, 'success')
     }
     );
   }

@@ -91,7 +91,5 @@ public class UsuariosController {
 	@GetMapping("/usuarios/nomadmin/{id}")
 	public List<UsuariosEntity> showAdminNom(@PathVariable("id") String nombres){
 		return usuariosService.findAdminNom(nombres); 
-	}
-	
-	
+	}		
 }

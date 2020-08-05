@@ -22,7 +22,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   filtro() {
-    
     if(this.nombre === ""){
       this.showAll();
     }else {
@@ -34,19 +33,8 @@ export class UsuarioComponent implements OnInit {
     this.usuarioService.getUsuario().subscribe(
       usuarios => {
       console.log(usuarios);
-      
       this.usuarios = usuarios  }
     );
-  }
-
-  showAdmin(){
-    this.usuarioService.getUsuarioAdmin().subscribe(
-      usuarios => {
-        console.log(usuarios);
-      
-        this.usuarios = usuarios
-      }
-    ); 
   }
 
  

@@ -1,1 +1,41 @@
-<p>multa works!</p>
+<div class="card">
+    <div class="card-header">
+      LISTA DE USUARIOS
+    </div>
+    <div class="card-body">
+           
+                       
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" >Buscar</button>
+                  </span>
+                 <!--- <input type="text" class="form-control"  [(ngModel)]=""> -->
+                </div>
+              </div>
+        </div>
+      
+        <table class="table table-bordered table-stripped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Multa</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor = "let item of multas ">
+                    
+                  <td>{{item.idMulta }}</td>
+                  <td>{{item.idTipo.descripcion | titlecase}}</td>
+                  <td>{{item.valor}}td>
+                  <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/multas/form']">Modificar Multa</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+  </div>
+
