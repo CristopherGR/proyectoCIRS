@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Multas} from './multa'; 
 import {MultaService} from './multa.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 import { TipoMultas } from './tipomulta';
 
@@ -11,20 +11,21 @@ import { TipoMultas } from './tipomulta';
 })
 export class FormultaComponent implements OnInit {
 
-  public multas: Multas = new Multas();
-  public title: string = "Ingresar gasto" ; 
+  multas: Multas = new Multas();
+  title: string = "Ingresar gasto" ; 
   tipo: TipoMultas[];
 
 
-  constructor(private multaService: MultaService, private router: Router) { }
+  constructor(private multaService: MultaService, private router: Router, private activated:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.multaService.getTipo().subscribe(tipo => this.tipo = tipo);
+     this.cargar();
+     this.getTipo();
   }
 
-  public creat(){
+  creat(){
     this.multaService.create(this.multas).subscribe(multas => { 
-      this.router.navigate(['/aportes'])
+      this.router.navigate(['aporte'])
       swal.fire('Ingreso de datos', `Multa creado con éxito!`, 'success')
      }
     );
@@ -32,6 +33,33 @@ export class FormultaComponent implements OnInit {
 
   compararTipo(o1: TipoMultas, o2:TipoMultas){
     return o1==null || o2==null ? false: o1.idTipo==o2.idTipo; 
+  }
+
+  getTipo(){
+    this.multaService.getTipo().subscribe(tipo => this.tipo = tipo);
+  }
+
+ 
+  cargar(){
+    this.activated.params.subscribe(parametros => {
+      let id = parametros['id']
+      if(id){
+        this.multaService.getMultaId(id).subscribe(
+          multas=>{
+            this.multas = multas
+          } 
+        )
+      }
+     });
+  }
+
+  updateU(){
+    this.multaService.updateMulta(this.multas).subscribe(
+      multas =>{
+        this.router.navigate(['aporte'])
+        swal.fire('Dato actualizado', `Dato actualizadocon éxito`, 'success')
+      } 
+    )
   }
 
   

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuarios } from '../usuario/Usuarios';
 import swal from 'sweetalert2'; 
-import {GastoService} from './gasto.service'; 
+import { Usuarios } from '../usuario/Usuarios';
 import { Gasto } from './gasto';
 import {UsuarioService} from '../usuario/usuario.service';
+import {GastoService} from './gasto.service'; 
 
 
 @Component({
@@ -53,18 +53,19 @@ export class GastoComponent implements OnInit {
     )
   }
 
-  /*showAllAdmin(){
-    this.usuarioService.searchUsuario(this.nombre).subscribe(
+  showAllAdmin(){
+    this.usuarioService.searchg(this.nombre).subscribe(
       usuarios=>{
-        usuarios = this.usuario; 
+        usuarios = this.usuario;
+        
         /*if (usuarios===[])  {
           swal.fire('¡Ups!', 'Gasto no encontrado', 'error')
           usuarios = this.usuario;
         }else {
           usuarios = this.usuario; 
-        }
+        }*/
       }
     )
-  }*/
+  }
 
 }

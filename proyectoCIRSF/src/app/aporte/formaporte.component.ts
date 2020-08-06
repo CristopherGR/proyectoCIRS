@@ -23,7 +23,6 @@ export class FormaporteComponent implements OnInit {
     this.buildForm();
     }
    
- 
    ngOnInit(): void {
      this.cargar()
    }
@@ -44,28 +43,33 @@ export class FormaporteComponent implements OnInit {
   }
  
    public creat(){
+  
      this.aporteService.create(this.aporte).subscribe(aporte => { 
+      console.log('crear')
        this.router.navigate(['aportes'])
        swal.fire('Ingreso de datos', `Aporte de ${aporte.valor} creado con éxito!`, 'success')
       }
      );
    }
 
-   public cargar(){
-    this.activated.params.subscribe(idaporte => {
-      let id = idaporte['id']
+   cargar(){
+    this.activated.params.subscribe(parametros => {
+      let id = parametros['id']
       if(id){
         this.aporteService.getAporteId(id).subscribe(
-          (aporte) => this.aporte = aporte
+          aporte=>{
+            console.log('cargar');
+            this.aporte = aporte
+          } 
         )
       }
-    });
-  }
-
-  public updateU(){
+     });
+    }
+    
+  updateU(){
     this.aporteService.updateAporte(this.aporte).subscribe(
       aporte =>{
-        this.router.navigate(['/aporte'])
+        this.router.navigate(['aporte'])
         swal.fire('Dato actualizado', `Dato actualizado ${aporte.idAporte} con éxito`, 'success')
       } 
     )
