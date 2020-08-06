@@ -53,7 +53,7 @@ export class GastoComponent implements OnInit {
     )
   }
 
-  showAllAdmin(){
+  /*showAllAdmin(){
     this.usuarioService.searchUsuario(this.nombre).subscribe(
       usuarios=>{
         usuarios = this.usuario; 
@@ -62,9 +62,9 @@ export class GastoComponent implements OnInit {
           usuarios = this.usuario;
         }else {
           usuarios = this.usuario; 
-        }*/
+        }
       }
     )
-  }
+  }*/
 
 }

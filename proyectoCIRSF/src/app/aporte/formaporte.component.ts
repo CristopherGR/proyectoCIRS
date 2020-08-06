@@ -3,6 +3,9 @@ import {Aportes} from './aportes';
 import {AporteService} from './aporte.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-formaporte',
@@ -14,13 +17,31 @@ export class FormaporteComponent implements OnInit {
 
   aporte: Aportes = new Aportes();  
  
- 
-   constructor(private aporteService: AporteService, private router: Router, private activated:ActivatedRoute) { }
+  form: FormGroup;
+
+   constructor(private aporteService: AporteService, private router: Router, private activated:ActivatedRoute,private formBuilder:FormBuilder) {
+    this.buildForm();
+    }
    
  
    ngOnInit(): void {
      this.cargar()
    }
+
+   private buildForm(){
+    this.form = this.formBuilder.group({
+      valor: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(0.01)]],
+      fechaAp: ['', [Validators.required]]
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value =>{
+      console.log(value);
+    });
+  }
  
    public creat(){
      this.aporteService.create(this.aporte).subscribe(aporte => { 
