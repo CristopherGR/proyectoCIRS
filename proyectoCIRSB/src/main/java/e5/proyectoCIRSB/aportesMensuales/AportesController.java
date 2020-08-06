@@ -33,10 +33,11 @@ public class AportesController {
 		return aportesService.findById(id); 
 	}
 	
-	@PostMapping("/aportes")
+	@PostMapping("/aportes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public AportesEntity create(@RequestBody AportesEntity aportes) {
-		return aportesService.save(aportes);
+	public void create(@RequestBody AportesEntity aportes, @PathVariable("id") String ci) {
+			aportesService.save(aportes);
+			aportesService.tablaIntermedia(aportes.getIdAporte(), ci);
 	}
 	
 	@PutMapping("/aportes/{id}")

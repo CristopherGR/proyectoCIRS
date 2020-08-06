@@ -35,4 +35,10 @@ public class AportesServiceIm implements AportesService {
 		return iAportes.findById(idAporte).orElseThrow(null);
 	}
 
+	@Override
+	public void tablaIntermedia(Integer idAporte, String ci) {
+		// TODO Auto-generated method stub
+		iAportes.tablaIntermedia(idAporte, ci);
+	}
+
 }
