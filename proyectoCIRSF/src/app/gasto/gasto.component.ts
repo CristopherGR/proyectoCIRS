@@ -54,7 +54,7 @@ export class GastoComponent implements OnInit {
   }
 
   showAllAdmin(){
-    this.usuarioService.searchUsuario(this.nombre).subscribe(
+    this.usuarioService.searchg(this.nombre).subscribe(
       usuarios=>{
         usuarios = this.usuario; 
         /*if (usuarios===[])  {

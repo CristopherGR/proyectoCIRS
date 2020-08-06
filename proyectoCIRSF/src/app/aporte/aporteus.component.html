@@ -53,7 +53,7 @@
                   <td>{{item.idAporte}}</td>
                   <td>{{item.valor}}</td>
                   <td>{{item.fecha | date:'dd-MM-yyyy'}}</td>
-                  <td><button type="button" name="button" [routerLink]="['/aporte/form/',item.idAporte]">Modificar</button></td>
+                  <td><button type="button" class="btn btn-primary" name="button" [routerLink]="['/aporte/form/',item.idAporte]">Modificar</button></td>
               </tr>
           </tbody>
       </table>
