@@ -2,19 +2,39 @@
     <div class="card-header">{{title}}</div>
     <div class="card-body"></div>
 
-    <form (ngSubmit) = "creat()">
+    <form [formGroup]="form" (ngSubmit) = "creat()">
        
         <div class="form-group row">
             <label for="valor" class="col form-label col-sm-2">Valor</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="multas.valor" name="valor" requerid >
+                <input type="text" class="form-control" [(ngModel)]="multas.valor" name="valor" formControlName="valor">
+            </div>
+            <div *ngIf="form.get('valor').errors && form.get('valor').touched">
+                <p *ngIf="form.get('valor').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
+            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                <p *ngIf="form.get('valor').hasError('pattern')">
+                  Este campo solol admite valores numericos
+                </p>
+            </div>
+            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                <p *ngIf="form.get('valor').hasError('min')">
+                  El valor ingresado es incorrecto
+                </p>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="fecha" class="col form-label col-sm-2">Fecha</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="multas.fechaMulta" name="fecha" requerid >
+                <input type="date" class="form-control" [(ngModel)]="multas.fechaMulta" name="fecha" formControlName="fechaM" >
+            </div>
+            <div *ngIf="form.get('fechaM').errors && form.get('fechaM').touched">
+                <p *ngIf="form.get('fechaM').hasError('required')">
+                  Es un campo requerido
+                </p>
             </div>
         </div>
 
@@ -30,10 +50,10 @@
 
         <div class="form-group row">
             <div class="col-sm-6">
-                <button class="btn btn-primary" role="button" (click)='creat()' *ngIf="!multas.idMulta else block" >Crear</button>
+                <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='creat()' *ngIf="!multas.idMulta else block" >Crear</button>
            
                 <ng-template #block>
-                    <button class="btn btn-primary" role="button" (click)='updateU()'>Editar</button>
+                    <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='updateU()'>Editar</button>
                 </ng-template>
             </div>
         </div>

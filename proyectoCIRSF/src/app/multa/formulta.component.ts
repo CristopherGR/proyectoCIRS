@@ -4,6 +4,8 @@ import {MultaService} from './multa.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 import { TipoMultas } from './tipomulta';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-formulta',
@@ -15,12 +17,30 @@ export class FormultaComponent implements OnInit {
   title: string = "Ingresar gasto" ; 
   tipo: TipoMultas[];
 
+  form: FormGroup;
+  constructor(private multaService: MultaService, private router: Router, private activated:ActivatedRoute,private formBuilder:FormBuilder) { 
+    this.buildForm();
+  }
 
-  constructor(private multaService: MultaService, private router: Router, private activated:ActivatedRoute) { }
-
+  
   ngOnInit(): void {
      this.cargar();
      this.getTipo();
+  }
+
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      valor: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(0.01)]],
+      fechaM: ['', [Validators.required]]
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value =>{
+      console.log(value);
+    });
   }
 
   creat(){
