@@ -3,22 +3,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Aportes } from './aportes';
 import { AporteService } from './aporte.service';
-
+import { UsuarioService } from '../usuario/usuario.service';
+import { Usuarios } from '../usuario/usuarios';
+ 
 @Component({
   selector: 'app-aporte',
-  templateUrl: './aporte.component.html',
-  styleUrls: ['./aporte.component.css']
+  templateUrl: './aporte.component.html'
 })
 export class AporteComponent implements OnInit {
 
   
   public aportes: Aportes[];
+  public usuarios: Usuarios[];
   
-  
-  constructor(private aporteService: AporteService, private router: Router) { }
+  constructor(private aporteService: AporteService, private usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
-      this.showAll(); 
+      this.showUsuario(); 
   }
 
   showAll(){
@@ -26,5 +27,14 @@ export class AporteComponent implements OnInit {
      aportes => {this.aportes = aportes}
     )
   }
+
+  showUsuario(){
+    this.usuarioService.getUsuario().subscribe(
+      usuarios=> {this.usuarios = usuarios}
+    )
+  }
+
+  
+  
 
 }

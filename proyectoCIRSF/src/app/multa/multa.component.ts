@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Multas} from './multa'; 
 import {MultaService} from './multa.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 import { TipoMultas } from './tipomulta';
+import { Usuarios } from '../usuario/Usuarios';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-multa',
@@ -12,23 +14,34 @@ import { TipoMultas } from './tipomulta';
 })
 export class MultaComponent implements OnInit {
 
-  public multas: Multas [];   
-  public title: string = "Ingresar gasto" ; 
+  multas: Multas [];   
+  title: string = "Ingresar gasto" ; 
   tipo: TipoMultas[];
+  usuarios: Usuarios;
 
-
-  constructor(private multaService: MultaService, private router: Router) { }
+  constructor(private multaService: MultaService, private router: Router, private activated:ActivatedRoute, private usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
-     this.show();
+     this.showAll();
+     this.cargar();
   }
 
-  public show(){
-    this.multaService.getMutla().subscribe(
-      multas => this.multas= multas
+  showAll(){
+    this.multaService.getMulta().subscribe(
+     multas => {this.multas = multas}
     )
   }
 
-
-
+  cargar(){
+    this.activated.params.subscribe(parametros => {
+      let id = parametros['id']
+      if(id){
+        this.usuarioService.getUsuarioId(id).subscribe(
+          usuarios=>{
+            this.usuarios = usuarios
+          } 
+        )
+      }
+     });
+  }
 }
