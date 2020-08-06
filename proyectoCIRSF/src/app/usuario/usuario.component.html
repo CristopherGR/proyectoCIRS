@@ -28,6 +28,7 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Dirección</th>
+                    
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -40,6 +41,7 @@
                     <td>{{item.apellidos | titlecase}}</td>
                     <td>{{item.correo}}</td>
                     <td>{{item.direccion}}</td>
+
                     <td><button type="button" name="button" [routerLink]="['/usuarios/form/',item.ciUsuario]">Editar</button></td>
                 </tr>
             </tbody>

@@ -17,26 +17,30 @@
         </div>
       
         <table class="table table-bordered table-stripped">
-            <thead class="thead-dark">
-                <tr>
-                   
-                    <th scope="col">Aporte</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Accion</th>
-                </tr>
-            </thead>
+          <thead class="thead-dark">
+              <tr>
+                 
+                  <th scope="col">Cedula</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Dirección</th>
+                  <th scope="col">Acciones</th>
+              </tr>
+          </thead>
 
-            <tbody>
-                <tr *ngFor = "let item of aportes ">
-                    
-                  <td>{{item.idAporte }}</td>
-                  <td>{{item.fecha | titlecase}}</td>
-                  <td>{{item.valor}}</td>
-                  <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/aporte/form']">Editar Aporte</button></td>
-                </tr>
-            </tbody>
-        </table>
-
+          <tbody>
+              <tr *ngFor = "let item of usuarios">
+                  
+                  <td>{{item.ciUsuario }}</td>
+                  <td>{{item.nombres | titlecase}}</td>
+                  <td>{{item.apellidos | titlecase}}</td>
+                  <td>{{item.correo}}</td>
+                  <td>{{item.direccion}}</td>
+                  <td><button type="button" name="button" [routerLink]="['/aporteusuario/form/',item.ciUsuario]">Ver aportes</button>
+                  <button type="button" name="button" [routerLink]="['/multas/',item.ciUsuario]">Ver multas</button></td>
+              </tr>
+          </tbody>
+      </table>
     </div>
   </div>

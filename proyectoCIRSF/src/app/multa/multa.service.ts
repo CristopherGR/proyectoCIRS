@@ -21,15 +21,20 @@ export class MultaService {
     return this.http.post<Multas>(this.url, multa, {headers: this.httpHeaders}); 
   }
 
-  getTipo(): Observable <TipoMultas[]>{
+ getTipo(): Observable <TipoMultas[]>{
     return this.http.get<TipoMultas[]>(this.url + '/tipo'); 
  }
 
- getMutla(): Observable<Multas[]>{
+ getMulta(): Observable<Multas[]>{
    return this.http.get<Multas[]>(this.url); 
  }
 
  updateMulta(multas: Multas): Observable<Multas>{
    return this.http.post<Multas>(`${this.url}/${multas.idMulta}`, multas); 
- }  
+ } 
+ 
+ getMultaId(id): Observable<Multas>{
+   return this.http.get<Multas>(`${this.url}/${id}`)
+ }
+ 
 }
