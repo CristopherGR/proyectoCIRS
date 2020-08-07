@@ -34,11 +34,11 @@ public class GastoController {
 		return gastoService.findById(id); 
 	}
 	
-	@PostMapping("/gastos")
+	@PostMapping("/gastos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Gasto create(@RequestBody Gasto gasto) { // request boddy porque viene en formato json dentro del cuerpo de la peticion (request)
-		 
-		return gastoService.save(gasto);
+	public void create(@RequestBody Gasto gasto, @PathVariable("id") String ci) { // request boddy porque viene en formato json dentro del cuerpo de la peticion (request)
+		gastoService.save(gasto);
+		gastoService.tablaIntermedia(gasto.getIdGasto(), ci);
 	}
 	
 	@PutMapping("/gastos/{id}")

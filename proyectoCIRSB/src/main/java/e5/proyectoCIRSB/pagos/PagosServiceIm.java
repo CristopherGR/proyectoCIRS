@@ -35,4 +35,10 @@ public class PagosServiceIm implements PagosService {
 		iPagos.deleteById(idPago);
 	}
 
+	@Override
+	public void tablaIntermedia(Integer id_credito, Integer id_pago) {
+		// TODO Auto-generated method stub
+		iPagos.tablaIntermedia(id_credito, id_pago);
+	}
+
 }

@@ -47,5 +47,11 @@ public class GastoServiceIm implements GastoService {
 		return (List<Gasto>) gastoModel.findByValor(valor);
 	}
 
+	@Override
+	public void tablaIntermedia(Integer id_gasto, String ci_usuario) {
+		// TODO Auto-generated method stub
+		gastoModel.tablaIntermedia(id_gasto, ci_usuario);
+	}
+
 	
 }
