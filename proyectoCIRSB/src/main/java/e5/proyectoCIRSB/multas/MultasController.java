@@ -33,13 +33,14 @@ public class MultasController {
 		return multaService.findById(id);
 	}
 	
-	@PostMapping("/multas")
+	@PostMapping("/multas/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public MultasEntity nuevo(@RequestBody MultasEntity multa) {
-		return multaService.save(multa);
+	public void nuevo(@RequestBody MultasEntity multa, @PathVariable("id") Integer idCredito) {
+		multaService.save(multa);
+		multaService.tablaIntermedia(multa.getIdMulta(), idCredito);
 	}
 	
-	@PostMapping("/multas/{id}")
+	@PostMapping("/multasUpdate/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public MultasEntity update(@RequestBody MultasEntity multa, @PathVariable Integer id) {
 		MultasEntity multaActual = multaService.findById(id); 

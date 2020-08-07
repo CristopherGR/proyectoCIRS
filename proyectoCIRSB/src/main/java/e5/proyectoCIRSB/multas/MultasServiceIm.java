@@ -35,4 +35,10 @@ public class MultasServiceIm implements MultasService {
 		iMultas.deleteById(idMulta);
 	}
 
+	@Override
+	public void tablaIntermedia(Integer id_multa, Integer id_credito) {
+		// TODO Auto-generated method stub
+		iMultas.tablaIntermedia(id_multa, id_credito);
+	}
+
 }

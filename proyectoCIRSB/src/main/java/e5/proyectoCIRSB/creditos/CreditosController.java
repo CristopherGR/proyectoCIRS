@@ -33,13 +33,14 @@ public class CreditosController {
 		return creditosService.findById(id);
 	}
 	
-	@PostMapping("/creditos")
+	@PostMapping("/creditos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public CreditosEntity nuevo(@RequestBody CreditosEntity credito) {
-		return creditosService.save(credito);
+	public void nuevo(@RequestBody CreditosEntity credito, @PathVariable("id") String ci) {
+		creditosService.save(credito);
+		creditosService.tablaIntermedia(ci, credito.getIdCredito());
 	}
 	
-	@PostMapping("/creditos/{id}")
+	@PostMapping("/creditosUpdate/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public CreditosEntity update(@RequestBody CreditosEntity credito, @PathVariable Integer id) {
 		CreditosEntity creditoActual = creditosService.findById(id); 

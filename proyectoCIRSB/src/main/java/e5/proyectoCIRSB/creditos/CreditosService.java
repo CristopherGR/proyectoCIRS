@@ -2,6 +2,8 @@ package e5.proyectoCIRSB.creditos;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 public interface CreditosService {
 	
 	public List<CreditosEntity> findAll();
@@ -15,4 +17,7 @@ public interface CreditosService {
 	public List<CreditosEntity> findByValor(Float valor); 
 	
 	public List<CreditosEntity> findByTipo(String tipo);
+	
+	public void tablaIntermedia(@Param("ci_usuario") String ci_usuario, @Param("id_credito") Integer id_credito);
+
 }

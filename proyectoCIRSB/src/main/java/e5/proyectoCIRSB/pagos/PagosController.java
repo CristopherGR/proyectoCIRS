@@ -32,13 +32,14 @@ public class PagosController {
 		return pagosService.findById(id);
 	}
 	
-	@PostMapping("/pagos")
+	@PostMapping("/pagos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public PagosEntity nuevo(@RequestBody PagosEntity pago) {
-		return pagosService.save(pago);
+	public void nuevo(@RequestBody PagosEntity pago, @PathVariable("id") Integer idCredito) {
+		pagosService.save(pago);
+		pagosService.tablaIntermedia(idCredito, pago.getIdPago());
 	}
 	
-	@PostMapping("/pagos/{id}")
+	@PostMapping("/pagosUpdate/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public PagosEntity update(@RequestBody PagosEntity multa, @PathVariable Integer id) {
 		PagosEntity pagoActual = pagosService.findById(id); 

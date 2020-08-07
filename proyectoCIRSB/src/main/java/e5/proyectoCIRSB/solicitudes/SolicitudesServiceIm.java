@@ -40,4 +40,10 @@ public class SolicitudesServiceIm implements SolicitudesService{
 		return (List<SolicitudesEntity>) iSolicitudes.finByEstado();
 	}
 
+	@Override
+	public void tablaIntermedia(Integer id_solicitud, String ci_usuario) {
+		// TODO Auto-generated method stub
+		iSolicitudes.tablaIntermedia(id_solicitud, ci_usuario);
+	}
+
 }

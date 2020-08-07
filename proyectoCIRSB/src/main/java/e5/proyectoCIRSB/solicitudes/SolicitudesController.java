@@ -34,10 +34,11 @@ public class SolicitudesController {
 		return solicitudesService.findById(id); 
 	}
 	
-	@PostMapping("/solicitudes")
+	@PostMapping("/solicitudes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public SolicitudesEntity create(@RequestBody SolicitudesEntity solicitud) { // request boddy porque viene en formato json 
-		return solicitudesService.save(solicitud);								//dentro del cuerpo de la peticion (request)
+	public void create(@RequestBody SolicitudesEntity solicitud, @PathVariable("id") String ci) { // request boddy porque viene en formato json 
+		 solicitudesService.save(solicitud);													//dentro del cuerpo de la peticion (request)
+		 solicitudesService.tablaIntermedia(solicitud.getIdSolicitud(), ci);
 	}
 	
 	@PutMapping("/solicitudes/{id}")

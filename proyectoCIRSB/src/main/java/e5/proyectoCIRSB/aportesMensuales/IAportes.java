@@ -11,7 +11,6 @@ public interface IAportes extends CrudRepository <AportesEntity, Integer> {
 
 	@Modifying
 	@Query(value="INSERT INTO usuariosaportes(id_aporte, ci_usuario) VALUES (:idaporte, :ciusuario)", nativeQuery = true)
-	//public void tablaIntermedia(String ci, Integer idAporte);
 	@Transactional
 	public void tablaIntermedia(@Param("idaporte") Integer idAporte, @Param("ciusuario") String ci);
 }
