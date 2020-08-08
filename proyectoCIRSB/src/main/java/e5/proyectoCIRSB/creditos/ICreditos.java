@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+
 public interface ICreditos extends CrudRepository <CreditosEntity, Integer>{
 	
 	@Query("from CreditosEntity c where c.valor = ?1")
@@ -16,6 +17,10 @@ public interface ICreditos extends CrudRepository <CreditosEntity, Integer>{
 	
 	@Query("from CreditosEntity c, TiposCreditos tc where tc.descripcion=?1 and c.idTipo=tc.idTipo")
 	public List<CreditosEntity> findByTipo(String tipo);
+	
+	@Query(value="SELECT * FROM creditos c, usuarioscreditos u "
+			+ "WHERE (c.id_credito = u.id_credito) AND (u.ci_usuario = ?1)", nativeQuery = true)
+	public List<CreditosEntity> findByUsuario(String ci);
 	
 	@Modifying
 	@Query(value="INSERT INTO usuarioscreditos(ci_usuario, id_credito) VALUES (:ci_usuario, :id_credito)", nativeQuery = true)

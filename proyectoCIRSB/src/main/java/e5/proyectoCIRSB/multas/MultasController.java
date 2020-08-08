@@ -33,6 +33,11 @@ public class MultasController {
 		return multaService.findById(id);
 	}
 	
+	@GetMapping("/multas/credito/{id}")
+	public List<MultasEntity> showByCredito(@PathVariable Integer id){
+		return multaService.findByCredito(id);
+	}
+	
 	@PostMapping("/multas/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevo(@RequestBody MultasEntity multa, @PathVariable("id") Integer idCredito) {

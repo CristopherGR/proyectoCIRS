@@ -53,4 +53,10 @@ public class CreditosSerciveIm implements CreditosService{
 		iCreditos.tablaIntermedia(ci_usuario, id_credito);
 	}
 
+	@Override
+	public List<CreditosEntity> findByUsuario(String ci) {
+		// TODO Auto-generated method stub
+		return (List<CreditosEntity>) iCreditos.findByUsuario(ci);
+	}
+
 }

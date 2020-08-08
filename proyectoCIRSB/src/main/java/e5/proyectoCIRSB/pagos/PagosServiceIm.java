@@ -41,4 +41,10 @@ public class PagosServiceIm implements PagosService {
 		iPagos.tablaIntermedia(id_credito, id_pago);
 	}
 
+	@Override
+	public List<PagosEntity> findByCredito(Integer id) {
+		// TODO Auto-generated method stub
+		return (List<PagosEntity>) iPagos.findByCredito(id);
+	}
+
 }

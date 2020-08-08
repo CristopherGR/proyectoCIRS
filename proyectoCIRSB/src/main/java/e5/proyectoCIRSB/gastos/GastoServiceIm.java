@@ -53,5 +53,11 @@ public class GastoServiceIm implements GastoService {
 		gastoModel.tablaIntermedia(id_gasto, ci_usuario);
 	}
 
+	@Override
+	public List<Gasto> findByUsuario(String ci) {
+		// TODO Auto-generated method stub
+		return (List<Gasto>) gastoModel.findByUsuario(ci);
+	}
+
 	
 }

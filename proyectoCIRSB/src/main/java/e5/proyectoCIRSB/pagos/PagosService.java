@@ -15,5 +15,7 @@ public interface PagosService {
 	public void delete(Integer idPago); 
 
 	public void tablaIntermedia(@Param("id_credito") Integer id_credito, @Param("id_pago") Integer id_pago);
+	
+	public List<PagosEntity> findByCredito(Integer id);
 
 }

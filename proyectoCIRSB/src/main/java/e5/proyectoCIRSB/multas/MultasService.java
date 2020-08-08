@@ -16,4 +16,5 @@ public interface MultasService {
 
 	public void tablaIntermedia(@Param("id_multa") Integer id_multa, @Param("id_credito") Integer id_credito);
 
+	public List<MultasEntity> findByCredito(Integer id);
 }

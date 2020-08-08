@@ -15,5 +15,8 @@ public interface AportesService {
 	public AportesEntity findById(Integer idAporte);
 	
 	public void tablaIntermedia(@Param("idaporte") Integer idAporte, @Param("ciusuario") String ci);
+	
+	public List<AportesEntity> findAporteByUsuario(String ci);
+
 
 }

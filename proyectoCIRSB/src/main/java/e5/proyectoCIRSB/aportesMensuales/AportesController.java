@@ -33,6 +33,11 @@ public class AportesController {
 		return aportesService.findById(id); 
 	}
 	
+	@GetMapping("/aportes/usuario/{id}")
+	public List<AportesEntity> showByUsuario(@PathVariable String id) {
+		return aportesService.findAporteByUsuario(id);
+	}
+	
 	@PostMapping("/aportes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody AportesEntity aportes, @PathVariable("id") String ci) {

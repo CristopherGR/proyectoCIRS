@@ -41,4 +41,10 @@ public class AportesServiceIm implements AportesService {
 		iAportes.tablaIntermedia(idAporte, ci);
 	}
 
+	@Override
+	public List<AportesEntity> findAporteByUsuario(String ci) {
+		// TODO Auto-generated method stub
+		return (List<AportesEntity>) iAportes.findAporteByUsuario(ci);
+	}
+
 }

@@ -41,4 +41,10 @@ public class MultasServiceIm implements MultasService {
 		iMultas.tablaIntermedia(id_multa, id_credito);
 	}
 
+	@Override
+	public List<MultasEntity> findByCredito(Integer id) {
+		// TODO Auto-generated method stub
+		return (List<MultasEntity>) iMultas.findByCredito(id);
+	}
+
 }
