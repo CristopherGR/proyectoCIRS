@@ -34,6 +34,11 @@ public class SolicitudesController {
 		return solicitudesService.findById(id); 
 	}
 	
+	@GetMapping("/solicitudes/usuario/{id}")
+	public List<SolicitudesEntity> showByUsuario(@PathVariable("id") String ci) {
+		return solicitudesService.findByUsuario(ci);
+	}
+	
 	@PostMapping("/solicitudes/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody SolicitudesEntity solicitud, @PathVariable("id") String ci) { // request boddy porque viene en formato json 

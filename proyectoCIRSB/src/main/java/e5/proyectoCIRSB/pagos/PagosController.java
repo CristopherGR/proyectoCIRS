@@ -32,6 +32,11 @@ public class PagosController {
 		return pagosService.findById(id);
 	}
 	
+	@GetMapping("/pagos/credito/{id}")
+	public List<PagosEntity> showbyCredito(@PathVariable Integer id){
+		return pagosService.findByCredito(id);
+	}
+	
 	@PostMapping("/pagos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevo(@RequestBody PagosEntity pago, @PathVariable("id") Integer idCredito) {

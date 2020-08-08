@@ -33,6 +33,11 @@ public class CreditosController {
 		return creditosService.findById(id);
 	}
 	
+	@GetMapping("/creditos/usuario/{id}")
+	public List<CreditosEntity> showByUsuario(@PathVariable String id){
+		return creditosService.findByUsuario(id);
+	}
+	
 	@PostMapping("/creditos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevo(@RequestBody CreditosEntity credito, @PathVariable("id") String ci) {

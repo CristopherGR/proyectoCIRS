@@ -34,6 +34,11 @@ public class GastoController {
 		return gastoService.findById(id); 
 	}
 	
+	@GetMapping("/gastos/usuario/{id}")
+	public List<Gasto> showByUsuario(@PathVariable String id) {
+		return gastoService.findByUsuario(id);
+	}
+	
 	@PostMapping("/gastos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody Gasto gasto, @PathVariable("id") String ci) { // request boddy porque viene en formato json dentro del cuerpo de la peticion (request)

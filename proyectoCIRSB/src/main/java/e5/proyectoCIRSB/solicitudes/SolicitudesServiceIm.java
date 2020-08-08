@@ -46,4 +46,10 @@ public class SolicitudesServiceIm implements SolicitudesService{
 		iSolicitudes.tablaIntermedia(id_solicitud, ci_usuario);
 	}
 
+	@Override
+	public List<SolicitudesEntity> findByUsuario(String ci) {
+		// TODO Auto-generated method stub
+		return (List<SolicitudesEntity>) iSolicitudes.findByUsuario(ci);
+	}
+
 }
