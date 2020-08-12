@@ -42,7 +42,8 @@ const routes: Routes = [
   {path: 'aporte', component: AporteComponent},
   {path: 'aporte/form/:id', component: FormaporteComponent},
   {path: 'aporteusuario/form/:id', component: AporteusComponent},
-  {path: 'solicitud', component:UsersolicitudComponent}
+  {path: 'solicitud', component:UsersolicitudComponent},
+  {path: 'pago/:id', component:PagoComponent}
 ];
 
 

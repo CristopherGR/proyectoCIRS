@@ -51,7 +51,7 @@ export class CreditoComponent implements OnInit {
   searchUsuarioAdmin(){
     let valors = Number(this.valor)
 
-    this.creditoService.searchGasto(valors).subscribe(
+    this.creditoService.searchCreditoValor(valors).subscribe(
       creditos => {
         if(creditos === []){
           console.log(creditos)

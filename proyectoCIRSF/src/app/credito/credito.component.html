@@ -35,6 +35,8 @@
                     <th scope="col">Cuotas Pagadas</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Total a Pagar</th>
+                    <th scope="col">Acción</th>
+                    
 
                 </tr>
             </thead>
@@ -48,6 +50,7 @@
                     <td>{{item.cuotasPagadas}}</td>
                     <td>{{item.descripcion}}</td>
                     <td>{{item.totalPagar}}</td>
+                    <td><button type="button" class="btn btn-primary" name="button" [routerLink]="['/pago/',item.idCredito]">Ver Pagos</button></td>
                     
                 </tr>
             </tbody>

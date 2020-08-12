@@ -62,4 +62,8 @@ public class PagosController {
 		pagosService.delete(id);
 	}
 
+	@GetMapping("/pagos/tipos")
+	public List<TiposPagos> tipos(){
+		return pagosService.findTiposAll();
+	}
 }

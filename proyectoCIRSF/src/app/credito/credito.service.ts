@@ -21,11 +21,11 @@ export class CreditoService {
     return this.http.get<Creditos[]>(this.url);  // se hace un cast de USUARIO
   }
 
- searchGasto(valor:number): Observable<Creditos[]>{
+ searchCreditoValor(valor:number): Observable<Creditos[]>{
     return this.http.get<Creditos[]>(`${this.url}/valor/${valor}`);
   }
   
-  searchGastoTipo(nombre:string): Observable <Creditos>{
+  searchCreditoTipo(nombre:string): Observable <Creditos>{
     return this.http.get<Creditos>(`${this.url}/tipo/${nombre}`);
   }
   
@@ -39,6 +39,14 @@ export class CreditoService {
 
   getCreditoUser(id): Observable<Creditos[]>{
     return this.http.get<Creditos[]>(`${this.url}/usuario/${id}`); 
+  } 
+
+  getCreditoId(id): Observable <Creditos>{
+    return this.http.get<Creditos>(`${this.url}/${id}`); 
+  } 
+
+  updateCredito(credito: Creditos): Observable <Creditos>{
+    return this.http.post<Creditos>(`${this.url}/${credito.idCredito}`, credito); 
   } 
 
 }

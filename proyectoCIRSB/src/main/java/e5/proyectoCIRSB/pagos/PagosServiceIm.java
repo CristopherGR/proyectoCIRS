@@ -47,4 +47,10 @@ public class PagosServiceIm implements PagosService {
 		return (List<PagosEntity>) iPagos.findByCredito(id);
 	}
 
+	@Override
+	public List<TiposPagos> findTiposAll() {
+		// TODO Auto-generated method stub
+		return (List<TiposPagos>) iPagos.findTiposAll();
+	}
+
 }
