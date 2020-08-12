@@ -67,4 +67,9 @@ public class CreditosSerciveIm implements CreditosService{
 
 
 
+	public List<EstadosCreditos> findByEstadoA() {
+		// TODO Auto-generated method stub
+		return (List<EstadosCreditos>) iCreditos.findByEstadoA();
+	}
+
 }

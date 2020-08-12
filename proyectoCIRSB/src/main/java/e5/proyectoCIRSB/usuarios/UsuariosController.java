@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -31,7 +32,7 @@ public class UsuariosController {
 	public UsuariosEntity showById(@PathVariable("id") String ci) {
 		return usuariosService.findById(ci);
 	}
-	
+		
 	@PostMapping("/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsuariosEntity nuevo(@RequestBody UsuariosEntity usuario) {
@@ -56,6 +57,16 @@ public class UsuariosController {
 		return usuariosService.save(usuarioActual); 
 	}
 	
+	@PutMapping("/usuarios/updateEstado/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public UsuariosEntity updateEstado(@PathVariable("id") String ci) {
+		
+		UsuariosEntity usuarioActual = usuariosService.findById(ci);
+		usuarioActual.setEstado("activo");
+		
+		return usuariosService.save(usuarioActual); 
+	}
+	
 	@DeleteMapping ("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") String ci) {
@@ -75,6 +86,11 @@ public class UsuariosController {
 	@GetMapping("/usuarios/estado")
 	public List<UsuariosEntity> showByEstado(){
 		return usuariosService.findByEstado();
+	}
+	
+	@GetMapping("/usuarios/estadoA")
+	public List<UsuariosEntity> showByEstadoA(){
+		return usuariosService.findByEstadoA();
 	}
 
 	@GetMapping("/usuarios/tipos")

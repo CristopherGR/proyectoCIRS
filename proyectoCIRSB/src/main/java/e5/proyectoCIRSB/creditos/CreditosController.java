@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,6 +37,11 @@ public class CreditosController {
 	@GetMapping("/creditos/usuario/{id}")
 	public List<CreditosEntity> showByUsuario(@PathVariable String id){
 		return creditosService.findByUsuario(id);
+	}
+	
+	@GetMapping("/creditos/estadoA")
+	public List<EstadosCreditos> showByEstadoA(){
+		return creditosService.findByEstadoA();
 	}
 	
 	@PostMapping("/creditos/{id}")
@@ -67,6 +73,16 @@ public class CreditosController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Integer id) {
 		creditosService.delete(id);
+	}
+	
+	@PutMapping("/creditos/updateEstado/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public CreditosEntity updateEstado(@RequestBody EstadosCreditos estado, @PathVariable("id") Integer id) {
+		
+		CreditosEntity creditoActual = creditosService.findById(id);
+		creditoActual.setIdEstado(estado);
+		
+		return creditosService.save(creditoActual);
 	}
 	
 	@GetMapping ("/creditos/valor/{id}")

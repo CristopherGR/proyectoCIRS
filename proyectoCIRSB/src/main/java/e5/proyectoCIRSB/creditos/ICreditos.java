@@ -18,6 +18,9 @@ public interface ICreditos extends CrudRepository <CreditosEntity, Integer>{
 	@Query("from CreditosEntity c, TiposCreditos tc where tc.descripcion=?1 and c.idTipo=tc.idTipo")
 	public List<CreditosEntity> findByTipo(String tipo);
 	
+	@Query("from EstadosCreditos e where e.idEstado = 1")
+	public List<EstadosCreditos> findByEstadoA(); 
+	
 	@Query(value="SELECT * FROM creditos c, usuarioscreditos u "
 			+ "WHERE (c.id_credito = u.id_credito) AND (u.ci_usuario = ?1)", nativeQuery = true)
 	public List<CreditosEntity> findByUsuario(String ci);
