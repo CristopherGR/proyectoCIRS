@@ -23,4 +23,7 @@ public interface UsuariosService {
 	public List<UsuariosEntity> findAdminNom(String nombres); 
 
 	public List<UsuariosEntity> findByEstado();
+	
+	public List<UsuariosEntity> findByEstadoA();
+	
 }
