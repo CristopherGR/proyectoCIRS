@@ -59,4 +59,10 @@ public class CreditosSerciveIm implements CreditosService{
 		return (List<CreditosEntity>) iCreditos.findByUsuario(ci);
 	}
 
+	@Override
+	public List<EstadosCreditos> findByEstadoA() {
+		// TODO Auto-generated method stub
+		return (List<EstadosCreditos>) iCreditos.findByEstadoA();
+	}
+
 }
