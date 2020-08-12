@@ -27,4 +27,6 @@ public interface ICreditos extends CrudRepository <CreditosEntity, Integer>{
 	@Transactional
 	public void tablaIntermedia(@Param("ci_usuario") String ci_usuario, @Param("id_credito") Integer id_credito);
 
+	@Query("from TiposCreditos")
+	public List<TiposCreditos> Tipos();
 }

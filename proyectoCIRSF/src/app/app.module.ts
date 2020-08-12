@@ -22,6 +22,8 @@ import { FormgastoComponent } from './gasto/formgasto.component';
 import { FormaporteComponent } from './aporte/formaporte.component';
 import { FormultaComponent } from './multa/formulta.component';
 import { AporteusComponent } from './aporte/aporteus.component';
+import { UsersolicitudComponent } from './usuario/usersolicitud.component';
+import { CreditoformComponent } from './credito/creditoform.component';
 
 
 
@@ -33,12 +35,14 @@ const routes: Routes = [
   {path: 'usuarios/form/:id', component: FormusuarioComponent},
   {path: 'gastos', component:GastoComponent},
   {path: 'gasto/form', component:FormgastoComponent},
-  {path: 'creditos', component: CreditoComponent},
+  {path: 'creditos/:id', component: CreditoComponent},
+  {path: 'creditos/form/:id', component: CreditoformComponent},
   {path: 'multas/:id', component: MultaComponent},
   {path: 'multas/form/:id', component: FormultaComponent},
   {path: 'aporte', component: AporteComponent},
   {path: 'aporte/form/:id', component: FormaporteComponent},
-  {path: 'aporteusuario/form/:id', component: AporteusComponent}
+  {path: 'aporteusuario/form/:id', component: AporteusComponent},
+  {path: 'solicitud', component:UsersolicitudComponent}
 ];
 
 
@@ -60,7 +64,9 @@ const routes: Routes = [
     FormgastoComponent,
     FormaporteComponent,
     FormultaComponent,
-    AporteusComponent
+    AporteusComponent,
+    UsersolicitudComponent,
+    CreditoformComponent
   ],
   imports: [
     BrowserModule,

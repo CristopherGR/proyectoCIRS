@@ -1,22 +1,20 @@
-<div class="card bg-black text-black">
+<div class="card bg-black text-black col-12"  >
     <div class="card-header">{{title}}</div>
     <div class="card-body"></div>
 
     <form [formGroup]="form">
         
         <div class="form-group row" >
-            <label for="numCedula" class="col form-label col-sm-2">Numero de cédula</label>
-            <div class="col-sm-6" >
+            <label for="numCedula" class="col form-label col-sm-2 text-aling-left" >Número de cédula</label>
+            <div class="col-sm-4" >
                 <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
             </div>
 
         </div>
-
-        
-
+   
         <div class="form-group row">
             <label for="nombres" class="col form-label col-sm-2">Nombre</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <input type="text" class="form-control" [(ngModel)]="usuarios.nombres" name="nombres" formControlName="nombres">
             </div>
             <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
@@ -28,7 +26,7 @@
 
         <div class="form-group row">
             <label for="apellidos" class="col form-label col-sm-2">Apellido</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.apellidos" name="apellidos" formControlName="apellidos">  
             </div>
             <div *ngIf="form.get('apellidos').errors && form.get('apellidos').touched">
@@ -38,9 +36,9 @@
             </div>
         </div>
 
-        <!--<div class="form-group row">
+        <div class="form-group row">
             <label for="fechaNa" class="col form-label col-sm-2">Fecha de nacimiento</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <input type="date" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa" formControlName="fechaNa">  
             </div>
             <div *ngIf="form.get('fechaNa').errors && form.get('fechaNa').touched">
@@ -48,11 +46,11 @@
                   Es un campo requerido
                 </p>
             </div>
-        </div>-->
+        </div>
 
         <div class="form-group row">
             <label for="direccion" class="col form-label col-sm-2">Dirección</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.direccion"name="direccion" formControlName="direccion">  
             </div>
             <div *ngIf="form.get('direccion').errors && form.get('direccion').touched">
@@ -64,7 +62,7 @@
 
         <div class="form-group row">
             <label for="correo" class="col form-label col-sm-2">Correo</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <input type="email" class="form-control"  [(ngModel)]="usuarios.correo" name="correo" formControlName="correo">  
             </div>
             <div *ngIf="form.get('correo').errors && form.get('correo').touched">
@@ -80,8 +78,8 @@
         </div>
 
         <div class="form-group row">
-            <label for="telefono" class="col form-label col-sm-2">Telefono</label>
-            <div class="col-sm-6">
+            <label for="telefono" class="col form-label col-sm-2">Teléfono</label>
+            <div class="col-sm-4">
                 <input type="text" class="form-control"  [(ngModel)]="usuarios.telefono" name="telefono" formControlName="telefono">  
             </div>
             <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
@@ -101,9 +99,27 @@
             </div>
         </div>
 
+        <div class="form-group row" hidden>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.estado" name="estado" value="pendiente" >
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nombres" class="col form-label col-sm-2">Contraseña</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.password" name="nombres" formControlName="nombres">
+            </div>
+            <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
+                <p *ngIf="form.get('nombres').hasError('required')">
+                  Es un campo requerido
+                </p>
+            </div>
+        </div>
+
         <div class="form-group row">
             <label for="idTipoU" class="col form-label col-sm-2">TIPO DE USUARIO</label>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <select [compareWith]= "compararTipo" type="text" class="form-control" [(ngModel)]="usuarios.idTipoU" name="idTipoU" formControlName="idTipoU">
                     <option [ngValue]="tipoUsuario" *ngFor="let tipoUsuario of tipoUsuario">{{tipoUsuario.descripcion}}</option>
                 </select>
@@ -117,7 +133,7 @@
 
 
         <div class="form-group row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='creat()' *ngIf="!usuarios.ciUsuario else block" >Crear</button>
            
                 <ng-template #block>

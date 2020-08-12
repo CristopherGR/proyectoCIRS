@@ -42,7 +42,7 @@ export class FormaporteComponent implements OnInit {
     });
   }
  
-   public creat(){
+  /* public creat(){
   
      this.aporteService.create(this.aporte).subscribe(aporte => { 
       console.log('crear')
@@ -50,7 +50,7 @@ export class FormaporteComponent implements OnInit {
        swal.fire('Ingreso de datos', `Aporte de ${aporte.valor} creado con éxito!`, 'success')
       }
      );
-   }
+   }*/
 
    cargar(){
     this.activated.params.subscribe(parametros => {
