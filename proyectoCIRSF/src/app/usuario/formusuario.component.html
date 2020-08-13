@@ -1,148 +1,152 @@
-<div class="card bg-black text-black col-12"  >
-    <div class="card-header">{{title}}</div>
-    <div class="card-body"></div>
-
-    <form [formGroup]="form">
+<div class="row">
+    <div class="col-2" ></div>
+    <div class="col-8">
+        <div class="card bg-black text-black col-md-12" style="position: absolute; right: 0;">
+            <div class="card-header"><h4>{{title}}</h4></div>
+            <div class="card-body"></div>
         
-        <div class="form-group row" >
-            <label for="numCedula" class="col form-label col-sm-2 text-aling-left" >Número de cédula</label>
-            <div class="col-sm-4" >
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
-            </div>
-
-        </div>
-   
-        <div class="form-group row">
-            <label for="nombres" class="col form-label col-sm-2">Nombre</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.nombres" name="nombres" formControlName="nombres">
-            </div>
-            <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
-                <p *ngIf="form.get('nombres').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="apellidos" class="col form-label col-sm-2">Apellido</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control"  [(ngModel)]="usuarios.apellidos" name="apellidos" formControlName="apellidos">  
-            </div>
-            <div *ngIf="form.get('apellidos').errors && form.get('apellidos').touched">
-                <p *ngIf="form.get('apellidos').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="fechaNa" class="col form-label col-sm-2">Fecha de nacimiento</label>
-            <div class="col-sm-4">
-                <input type="date" class="form-control"  [(ngModel)]="usuarios.fechaNa" name="fechaNa" formControlName="fechaNa">  
-            </div>
-            <div *ngIf="form.get('fechaNa').errors && form.get('fechaNa').touched">
-                <p *ngIf="form.get('fechaNa').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="direccion" class="col form-label col-sm-2">Dirección</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control"  [(ngModel)]="usuarios.direccion"name="direccion" formControlName="direccion">  
-            </div>
-            <div *ngIf="form.get('direccion').errors && form.get('direccion').touched">
-                <p *ngIf="form.get('direccion').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="correo" class="col form-label col-sm-2">Correo</label>
-            <div class="col-sm-4">
-                <input type="email" class="form-control"  [(ngModel)]="usuarios.correo" name="correo" formControlName="correo">  
-            </div>
-            <div *ngIf="form.get('correo').errors && form.get('correo').touched">
-                <p *ngIf="form.get('correo').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-            <div *ngIf="form.get('correo').errors && form.get('correo').touched">
-                <p *ngIf="form.get('correo').hasError('email')">
-                  No es un email valido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="telefono" class="col form-label col-sm-2">Teléfono</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control"  [(ngModel)]="usuarios.telefono" name="telefono" formControlName="telefono">  
-            </div>
-            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
-                <p *ngIf="form.get('telefono').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
-                <p *ngIf="form.get('telefono').hasError('minlength')">
-                  El numero ingresado es inferior a 10 digitos
-                </p>
-            </div>
-            <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
-                <p *ngIf="form.get('telefono').hasError('maxlength')">
-                  El numero ingresado no debe contener mas de 10 digitos
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row" hidden>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.estado" name="estado" value="pendiente" >
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="nombres" class="col form-label col-sm-2">Contraseña</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.password" name="nombres" formControlName="nombres">
-            </div>
-            <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
-                <p *ngIf="form.get('nombres').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="idTipoU" class="col form-label col-sm-2">TIPO DE USUARIO</label>
-            <div class="col-sm-4">
-                <select [compareWith]= "compararTipo" type="text" class="form-control" [(ngModel)]="usuarios.idTipoU" name="idTipoU" formControlName="idTipoU">
-                    <option [ngValue]="tipoUsuario" *ngFor="let tipoUsuario of tipoUsuario">{{tipoUsuario.descripcion}}</option>
-                </select>
-            </div>
-            <div *ngIf="form.get('idTipoU').errors && form.get('idTipoU').touched">
-                <p *ngIf="form.get('idTipoU').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <div class="col-sm-4">
-                <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='creat()' *ngIf="!usuarios.ciUsuario else block" >Crear</button>
+            
+            <form [formGroup]="form">
+                
+                <div class="form-group row" >
+                    <label for="numCedula" class="col form-label col-sm-3 text-aling-rig" >Número de cédula</label>
+                    <div class="col-sm-6" >
+                        <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
+                    </div>
+        
+                </div>
            
-                <ng-template #block>
-                    <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='updateU()'>Editar</button>
-                </ng-template>
-
-            </div>
-        </div>
+                <div class="form-group row">
+                    <label for="nombres" class="col form-label col-sm-3">Nombre</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="usuarios.nombres" name="nombres" formControlName="nombres">
+                    </div>
+                    <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
+                        <p *ngIf="form.get('nombres').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
         
-    </form>
+                <div class="form-group row">
+                    <label for="apellidos" class="col form-label col-sm-3">Apellido</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  [(ngModel)]="usuarios.apellidos" name="apellidos" formControlName="apellidos">  
+                    </div>
+                    <div *ngIf="form.get('apellidos').errors && form.get('apellidos').touched">
+                        <p *ngIf="form.get('apellidos').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="fechaNa" class="col form-label col-sm-3">Fecha de nacimiento</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control"  [(ngModel)]="usuarios.fechaNa"  name="fechaNa" formControlName="fechaNa" >  
+                    </div>
+                    <div *ngIf="form.get('fechaNa').errors && form.get('fechaNa').touched">
+                        <p *ngIf="form.get('fechaNa').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="direccion" class="col form-label col-sm-3">Dirección</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  [(ngModel)]="usuarios.direccion"name="direccion" formControlName="direccion">  
+                    </div>
+                    <div *ngIf="form.get('direccion').errors && form.get('direccion').touched">
+                        <p *ngIf="form.get('direccion').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="correo" class="col form-label col-sm-3">Correo</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control"  [(ngModel)]="usuarios.correo" name="correo" formControlName="correo">  
+                    </div>
+                    <div *ngIf="form.get('correo').errors && form.get('correo').touched">
+                        <p *ngIf="form.get('correo').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                    <div *ngIf="form.get('correo').errors && form.get('correo').touched">
+                        <p *ngIf="form.get('correo').hasError('email')">
+                          No es un email valido
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="telefono" class="col form-label col-sm-3">Teléfono</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  [(ngModel)]="usuarios.telefono" name="telefono" formControlName="telefono">  
+                    </div>
+                    <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                        <p *ngIf="form.get('telefono').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                    <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                        <p *ngIf="form.get('telefono').hasError('minlength')">
+                          El numero ingresado es inferior a 10 digitos
+                        </p>
+                    </div>
+                    <div *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+                        <p *ngIf="form.get('telefono').hasError('maxlength')">
+                          El numero ingresado no debe contener mas de 10 digitos
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row" hidden>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="usuarios.estado" name="estado" value="pendiente" >
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="nombres" class="col form-label col-sm-3">Contraseña</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" [(ngModel)]="usuarios.password" name="nombres" formControlName="nombres">
+                    </div>
+                    <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
+                        <p *ngIf="form.get('nombres').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="idTipoU" class="col form-label col-sm-3">TIPO DE USUARIO</label>
+                    <div class="col-sm-6">
+                        <select [compareWith]= "compararTipo" type="text" class="form-control" [(ngModel)]="usuarios.idTipoU" name="idTipoU" formControlName="idTipoU">
+                            <option [ngValue]="tipoUsuario" *ngFor="let tipoUsuario of tipoUsuario">{{tipoUsuario.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="form.get('idTipoU').errors && form.get('idTipoU').touched">
+                        <p *ngIf="form.get('idTipoU').hasError('required')">
+                          Es un campo requerido
+                        </p>
+                    </div>
+                </div>
+        
+                <br>
+                <div class="form-group row">
+                    <div class="col-4"></div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary btn-block" [disabled]="form.invalid" role="button" (click)='creat()'>Crear</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <div class="col-2"></div>
 </div>
+
 

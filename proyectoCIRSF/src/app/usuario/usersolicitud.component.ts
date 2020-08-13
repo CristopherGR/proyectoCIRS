@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
+import { Router} from '@angular/router';
+
 import { UsuarioService } from './usuario.service';
 import { Usuarios } from './Usuarios';
 
@@ -12,7 +14,7 @@ export class UsersolicitudComponent implements OnInit {
 
   public usuarios:Usuarios[];  
   
-  constructor(private usuarioService: UsuarioService,) { }
+  constructor(private usuarioService: UsuarioService,private router: Router) { }
 
   ngOnInit(): void {
     this.getSolicitud();
@@ -25,7 +27,11 @@ export class UsersolicitudComponent implements OnInit {
   }
 
   updateU(id){
-    console.log(id); 
+    this.usuarioService.estado(this.usuarios, id).subscribe( () =>{
+      swal.fire('Socio Activo', `Socio activado con éxito`, 'success');
+      this.router.navigate(['/usuarios'])
+    }
+    )
   }
 
 

@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+.card-header{
+    text-align: center;
+    color: black;
+    background-color: #D6EAF8;
+    font-family: "Palatino Linotype";
+} 
+
+
+h4 {
+    overflow: hidden;
+    text-align: center;
+}
+
+h4:before,
+h4:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+h4:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+h4:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+.table{
+    text-align: center;
+}

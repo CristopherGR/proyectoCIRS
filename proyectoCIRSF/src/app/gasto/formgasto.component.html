@@ -3,46 +3,122 @@
     <div class="card-body"></div>
 
     
+    <div class="form-group row">
+        <label for="motivo" class="col form-label col-sm-2">Nombre:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuarios.nombres" name="valor" disabled>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="fecha" class="col form-label col-sm-2">Apellido:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuarios.apellidos" name="fecha" disabled >
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            INGRESAR GASTO
+          </button>    
+    </div>
+
+
+    <div class="card">
+        <div class="card-header">
+          LISTA DE GASTOS 
+        </div>
+        <div class="card-body"> 
+          
+            <table class="table table-bordered table-stripped">
+              <thead class="thead-dark">
+                  <tr>
+                     
+                      <th scope="col">Numero de factura</th>
+                      <th scope="col">Descripción</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Tipo</th>
+
+                  </tr>
+              </thead>
     
-    <form (ngSubmit) = "creat()">
+              <tbody>
+                  <tr *ngFor = "let item of gastos">
+                      
+                      <td>{{item.idGasto}}</td>
+                      <td>{{item.descripcion}}</td>
+                      <td>{{item.valor}}</td>
+                      <td>{{item.fecha | date:'dd-MM-yyyy'}}</td>
+                      <td>{{item.idTipo.descripcion}}</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+  <!----------------------MODAL--------------------------------------------------->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+            <form (ngSubmit) = "creat()">
             
-        <div class="form-group row">
-            <label for="motivo" class="col form-label col-sm-2">Motivo</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="gasto.descripcion" name="motivo" requerid >
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="valor" class="col form-label col-sm-2">Valor</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control"  [(ngModel)]="gasto.valor" name="valor" requerid>  
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="numFactura" class="col form-label col-sm-2">Numero de factura</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" [(ngModel)]="gasto.idGasto" name="numFactura" required>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="tipoGasto" class="col form-label col-sm-2">TIPO DE GASTO</label>
-            <div class="col-sm-6">
-                <select [compareWith]= "compararTipo" type="text" class="form-control" [(ngModel)]="gasto.idTipo" name="tipoGasto" required>
-                    <option [ngValue]="tipoGasto" *ngFor="let tipoGasto of tipoGasto">{{tipoGasto.descripcion}}</option>
-                </select>
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <button class="btn btn-primary" role="button">Crear</button>
-            </div>
-        </div>
+                <div class="form-group row">
+                    <label for="motivo" class="col form-label col-sm-2">Motivo</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="gasto.descripcion" name="motivo" requerid >
+                    </div>
+                </div>
         
-    </form>
+                <div class="form-group row">
+                    <label for="valor" class="col form-label col-sm-2">Valor</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  [(ngModel)]="gasto.valor" name="valor" requerid>  
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="numFactura" class="col form-label col-sm-2">Numero de factura</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="gasto.idGasto" name="numFactura" required>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="tipoGasto" class="col form-label col-sm-2">TIPO DE GASTO</label>
+                    <div class="col-sm-6">
+                        <select [compareWith]= "compararTipo" type="text" class="form-control" [(ngModel)]="gasto.idTipo" name="tipoGasto" required>
+                            <option [ngValue]="tipoGasto" *ngFor="let tipoGasto of tipoGasto">{{tipoGasto.descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+        
+        
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" role="button" >Crear</button>
+                    </div>
+                </div>
+                
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>       
+        </div>
+      </div>
+    </div>
+
+
+  
 </div>
 

@@ -18,7 +18,7 @@ export class UsuarioService {
 
 
   getUsuario(): Observable <Usuarios[]> {
-     return this.http.get<Usuarios[]>(this.url);  // se hace un cast de GASTO 
+     return this.http.get<Usuarios[]>(this.url + '/estadoA');  // se hace un cast de GASTO 
   }
 
   create (usuarios: Usuarios) : Observable <Usuarios>{
@@ -47,6 +47,10 @@ export class UsuarioService {
 
   getSolicitud(): Observable <Usuarios[]>{
     return this.http.get<Usuarios[]>(this.url + '/estado'); 
+  }
+
+  estado(usuarios:Usuarios[], id:string): Observable<Usuarios[]>{
+    return this.http.put<Usuarios[]>(`${this.url}/updateEstado/${id}`, usuarios)
   }
 
 

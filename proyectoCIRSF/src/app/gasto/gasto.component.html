@@ -5,7 +5,7 @@
     <div class="card-body">
            
                        
-        <div class="row">
+        <!--<div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
                   <span class="input-group-btn">
@@ -14,7 +14,7 @@
                   <input type="text" class="form-control"  [(ngModel)]="valor">
                 </div>
               </div>
-        </div>
+        </div>-->
       
         <table class="table table-bordered table-stripped">
             <thead class="thead-dark">
@@ -38,7 +38,7 @@
                   <td>{{item.apellidos | titlecase}}</td>
                   <td>{{item.correo}}</td>
                   <td>{{item.direccion}}</td>
-                  <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/gasto/form']">Ingresar Gasto</button></td>
+                  <td><button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/gasto/form', item.ciUsuario]">Ver gastos</button></td>
                 </tr>
             </tbody>
         </table>

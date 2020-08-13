@@ -22,6 +22,16 @@ header{
 	list-style: none;
 }
 
+h3 {
+    color: black;
+    text-align: center;
+    font-family: "Palatino Linotype"; 
+    font-size: 64px; 
+    font-style: normal; 
+    font-variant: normal; 
+    background-color: #5EBFF0;
+}
+
 .menu > li{
 	position: relative;
     display: inline-block;
@@ -30,7 +40,8 @@ header{
     font-variant: normal; 
     font-weight: bold;
     font-size: 24px;
-    padding: 15px;
+	padding: 15px;
+	text-align: center;
 }
 
 .menu > li > a{
@@ -69,3 +80,4 @@ header{
 	visibility: visible;
 	opacity: 1;
 }
+

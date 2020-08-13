@@ -34,12 +34,16 @@ export class GastoService {
     return this.http.get<Gasto[]>(`${this.urlg}/valorMayor/${valores}`);
   }
 
-  create (gastos: Gasto) : Observable <Gasto>{
-    return this.http.post<Gasto>(this.urlg, gastos, {headers: this.httpHeaders}); 
+  create (gastos: Gasto, id: String) : Observable <Gasto>{
+    return this.http.post<Gasto>(`${this.urlg}/${id}`, gastos, {headers: this.httpHeaders}); 
   }
 
   getTipoGasto(): Observable<TipoGasto[]>{
     return this.http.get<TipoGasto[]>(this.urlg + '/tipos'); 
+  }
+
+  getGastoUsuario(id:String): Observable<Gasto[]>{
+    return this.http.get<Gasto[]>(`${this.urlg}/usuario/${id}`)
   }
 
 }
