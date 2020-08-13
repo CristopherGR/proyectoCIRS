@@ -16,9 +16,17 @@
                 </div>
 
                 <div class="col-lg-4"> 
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    INGRESAR CREDITO
+                  
+                  <button type="button" class="btn btn-primary" (click)=creat() *ngIf="n else block ">
+                    DISPONIBILIDAD
                   </button> 
+
+                  <ng-template #block>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      INGRESAR CREDITO
+                    </button> 
+                  </ng-template>
+                  
                 </div>
             </div>    
     
@@ -30,7 +38,8 @@
                 <tr>
                    
                     <th scope="col">Tipo</th>
-                    <th scope="col">Valor Total</th>
+                    <th scope="col">Intereses</th>
+                    <th scope="col">Valor del crédito</th>
                     <th scope="col">Cuotas</th>
                     <th scope="col">Cuotas Pagadas</th>
                     <th scope="col">Descripcion</th>
@@ -46,6 +55,7 @@
                     
                     <td>{{item.idTipo.descripcion }}</td>
                     <td>{{item.interes}}</td>
+                    <td>{{item.valor}}</td>
                     <td>{{item.cuotas}}</td>
                     <td>{{item.cuotasPagadas}}</td>
                     <td>{{item.descripcion}}</td>
@@ -170,17 +180,12 @@
     
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click) = creat()>Crear</button>
+                    <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click) = crear()>Crear</button>
                 </div>
             </div>
             
         </form>
 
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" [disabled]="form.invalid" >Save changes</button>
         </div>
       </div>
     </div>

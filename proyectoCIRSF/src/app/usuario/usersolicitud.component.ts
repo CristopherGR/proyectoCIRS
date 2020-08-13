@@ -34,5 +34,14 @@ export class UsersolicitudComponent implements OnInit {
     )
   }
 
+  rechazar(id){
+    this.usuarioService.eliminar(id).subscribe(
+      () => {
+        swal.fire('Rechazado', `Socio rechazado`, 'error')
+        this.router.navigate(['/usuarios'])
+      }
+    )
+  }
+
 
 }

@@ -37,7 +37,7 @@ export class UsuarioService {
     return this.http.get<Usuarios[]>(this.url + '/admin');  // se hace un cast de USUARIO
   }
 
-  getUsuarioId(id): Observable<Usuarios>{
+  getUsuarioId(id:String): Observable<Usuarios>{
     return this.http.get<Usuarios>(`${this.url}/${id}`);
   }
 
@@ -53,6 +53,8 @@ export class UsuarioService {
     return this.http.put<Usuarios[]>(`${this.url}/updateEstado/${id}`, usuarios)
   }
 
-
+  eliminar(id): Observable<Usuarios[]>{
+    return this.http.delete<any>(`${this.url}/${id}`)
+  }
 
 }

@@ -21,7 +21,7 @@ export class CreditoComponent implements OnInit {
   valor: string; 
   credito: Creditos = new Creditos();
   tipocredito: TipoCreditos[];
-
+  n: boolean = true; 
   form: FormGroup;
 
   constructor(private creditoService:CreditoService, private activated:ActivatedRoute,private formBuilder:FormBuilder ) {
@@ -31,6 +31,7 @@ export class CreditoComponent implements OnInit {
   ngOnInit(): void {
     this.showAllCreditos();
     this.showTipo();
+    this.creat();
   }
 
   private buildForm(){
@@ -108,31 +109,34 @@ export class CreditoComponent implements OnInit {
     }
 
     if (cont>0){
-      console.log("no se puede crear")
-      
-    }else {
-      this.activated.params.subscribe(parametros => {
-        let id = parametros['id']
-        if(id){
-          console.log(id)
-          this.credito.interes = this.interes();
-          this.credito.totalPagar = this.total();  
-          this.creditoService.create(this.credito, id).subscribe( 
-            nuevo => {console.log("credito creado")})
-        }
-       });
+      this.n = true;
+      swal.fire('No esta disponible','Creditos Activos','error')
+    }else{
+      this.n = false;
     }
   }
 
+  crear(){
+    this.activated.params.subscribe(parametros => {
+      let id = parametros['id']
+      if(id){
+        console.log(id)
+        this.credito.interes = this.interes();
+        this.credito.totalPagar = this.total();  
+        this.creditoService.create(this.credito, id).subscribe( 
+          nuevo => {swal.fire('Creado con éxito','Creditos creado','success')})
+      }
+     });
+  }
  
 
   interes(): number {
-      return this.credito.valor*0.15;
+      return this.credito.valor*0.015;
 
   }
 
   total(): number{
-      return this.credito.valor + this.credito.interes 
+      return (this.credito.valor+this.credito.interes) 
   }
 
   estado(): number{

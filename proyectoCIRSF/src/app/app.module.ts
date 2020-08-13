@@ -24,7 +24,7 @@ import { FormultaComponent } from './multa/formulta.component';
 import { AporteusComponent } from './aporte/aporteus.component';
 import { UsersolicitudComponent } from './usuario/usersolicitud.component';
 import { CreditoformComponent } from './credito/creditoform.component';
-import { UsolicitudComponent } from './usuario/usolicitud/usolicitud.component';
+
 
 
 
@@ -69,8 +69,7 @@ const routes: Routes = [
     FormultaComponent,
     AporteusComponent,
     UsersolicitudComponent,
-    CreditoformComponent,
-    UsolicitudComponent
+    CreditoformComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ import { Usuarios } from './Usuarios';
 export class FormusuarioComponent implements OnInit {
 
   public title: string = "Ingresar Usuario";   
-  public tipoUsuario: TipoUsuario[]; 
+  public idTipoU: TipoUsuario[]; 
   public usuarios: Usuarios = new Usuarios();
  
 
@@ -59,7 +59,9 @@ export class FormusuarioComponent implements OnInit {
 
   getTipoUsuario(){
     this.usuarioService.getTipoUsuario().subscribe(
-       tipoUsuario => this.tipoUsuario = tipoUsuario
+      idTipoU =>{ this.idTipoU = idTipoU
+          console.log(idTipoU)
+      }
     );
   }
 
@@ -67,7 +69,7 @@ export class FormusuarioComponent implements OnInit {
     this.usuarioService.create(this.usuarios).subscribe(usuarios => {
       console.log(usuarios)
       this.router.navigate(['/usuarios'])
-      swal.fire('Ingreso de datos', `Usuario ${usuarios.nombres} creado con éxito!`, 'success')
+      swal.fire('Actualizado', `Usuario ${usuarios.nombres} actualizado con éxito!`, 'success')
     }
     );
   }
@@ -77,11 +79,15 @@ export class FormusuarioComponent implements OnInit {
   }
 
   cargar(){
+    console.log('hola')
     this.activated.params.subscribe(parametros => {
       let id = parametros['id']
+      
       if(id){
         this.usuarioService.getUsuarioId(id).subscribe(
-          (usuarios) => this.usuarios = usuarios
+      
+          (usuarios) => {this.usuarios = usuarios
+            console.log(usuarios)}
         )
       }
     });

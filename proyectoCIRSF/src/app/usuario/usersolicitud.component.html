@@ -35,7 +35,7 @@
                     <td>{{item.direccion}}</td>
 
                     <td><button type="button" class="btn btn-success" name="button" (click)="updateU(item.ciUsuario)" style="margin-right: 10mm;"> Aceptar</button>
-                        <button type="button" class="btn btn-danger" name="button" >Rechazar</button></td>
+                        <button type="button" class="btn btn-danger" name="button" (click)="rechazar(item.ciUsuario)">Rechazar</button></td>
                 </tr>
             </tbody>
         </table>
