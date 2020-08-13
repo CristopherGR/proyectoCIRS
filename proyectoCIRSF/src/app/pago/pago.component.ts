@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TipoPago } from './tipopago';
 import {Creditos} from '../credito/credito';
 import {CreditoService} from '../credito/credito.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-pago',
@@ -20,6 +21,7 @@ export class PagoComponent implements OnInit {
   pago: Pago = new Pago(); 
   credito:Creditos;
   tipopago: TipoPago[];
+  variable: number = 0 ;   
 
   constructor(private creditoService:CreditoService, private activated:ActivatedRoute, private pagoService:PagoService) { }
 
@@ -27,6 +29,8 @@ export class PagoComponent implements OnInit {
     this.showTipo();
     this.showCreditos();
     this.showPagos();
+    this.atualizar();
+    console.log(this.variable); 
   }
 
 
@@ -61,20 +65,23 @@ export class PagoComponent implements OnInit {
 
 
   creat(){
-    
     if (this.credito.cuotas == this.credito.cuotasPagadas){
       console.log('no puede ingresar mas cuotas');
     }else{
       this.activated.params.subscribe(parametros => {
         let id = parametros['id']
         if(id){
-          console.log(id)
-          console.log(this.pago)
-          this.pagoService.create(this.pago, id).subscribe( 
-            nuevo => {console.log(this.pago)}) 
+            this.pagoService.create(this.pago, id).subscribe(() => { this.variable = this.variable + 1})  
         }
-       });
+      });
     }
-  }  
-      
+  } 
+  
+  atualizar(){
+    if (this.variable > 0){
+      this.credito.cuotasPagadas = this.credito.cuotasPagadas + 1; 
+      this.creditoService.updateCredito(this.credito).subscribe( () => console.log(this.credito.cuotasPagadas) ); 
+    } 
+  }
+  
 }
