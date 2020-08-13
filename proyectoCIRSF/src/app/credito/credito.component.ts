@@ -6,6 +6,8 @@ import {CreditoService} from './credito.service';
 import swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
 import { TipoCreditos } from './tipocredito';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-credito',
@@ -20,13 +22,34 @@ export class CreditoComponent implements OnInit {
   credito: Creditos = new Creditos();
   tipocredito: TipoCreditos[];
 
-  constructor(private creditoService:CreditoService, private activated:ActivatedRoute ) { }
+  form: FormGroup;
+
+  constructor(private creditoService:CreditoService, private activated:ActivatedRoute,private formBuilder:FormBuilder ) {
+    this.buildForm();
+   }
 
   ngOnInit(): void {
     this.showAllCreditos();
     this.showTipo();
   }
 
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      motivo:['', [Validators.required]],
+      valor: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(0.01)]],
+      fechaCredito: ['', [Validators.required]],
+      cuotas: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(1)]],
+      tipoCredito:['', [Validators.required]]
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value =>{
+      console.log(value);
+    });
+  }
   
   filtro() {
     

@@ -8,6 +8,8 @@ import { TipoPago } from './tipopago';
 import {Creditos} from '../credito/credito';
 import {CreditoService} from '../credito/credito.service';
 import { ThrowStmt } from '@angular/compiler';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-pago',
@@ -23,7 +25,11 @@ export class PagoComponent implements OnInit {
   tipopago: TipoPago[];
   variable: number = 0 ;   
 
-  constructor(private creditoService:CreditoService, private activated:ActivatedRoute, private pagoService:PagoService) { }
+  form: FormGroup;
+
+  constructor(private creditoService:CreditoService, private activated:ActivatedRoute, private pagoService:PagoService,private formBuilder:FormBuilder) { 
+    this.buildForm();
+  }
 
   ngOnInit(): void {
     this.showTipo();
@@ -31,6 +37,22 @@ export class PagoComponent implements OnInit {
     this.showPagos();
     this.atualizar();
     console.log(this.variable); 
+  }
+
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      fechaPago: ['', [Validators.required]],
+      valor: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(0.01)]],
+      tipoPago:['', [Validators.required]]
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value =>{
+      console.log(value);
+    });
   }
 
 

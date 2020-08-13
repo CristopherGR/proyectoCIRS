@@ -9,20 +9,22 @@
             <div class="col-sm-6">
                 <input type="text" class="form-control" [(ngModel)]="aporte.valor" name="motivo" formControlName="valor">
             </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').touched">
-                <p *ngIf="form.get('valor').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
-                <p *ngIf="form.get('valor').hasError('pattern')">
-                  Este campo solol admite valores numericos
-                </p>
-            </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
-                <p *ngIf="form.get('valor').hasError('min')">
-                  El valor ingresado es incorrecto
-                </p>
+            <div class="validos" style="color: rgb(241, 50, 50);">
+                <div *ngIf="form.get('valor').errors && form.get('valor').touched">
+                    <p *ngIf="form.get('valor').hasError('required')">
+                    *Es un campo requerido
+                    </p>
+                </div>
+                <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                    <p *ngIf="form.get('valor').hasError('pattern')">
+                    Este campo solo admite valores numéricos
+                    </p>
+                </div>
+                <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                    <p *ngIf="form.get('valor').hasError('min')">
+                    *El valor ingresado es incorrecto
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -31,10 +33,12 @@
             <div class="col-sm-6">
                 <input type="date" class="form-control" [(ngModel)]="aporte.fecha" name="fecha" formControlName="fechaAp">
             </div>
-            <div *ngIf="form.get('fechaAp').errors && form.get('fechaAp').touched">
-                <p *ngIf="form.get('fechaAp').hasError('required')">
-                  Es un campo requerido
-                </p>
+            <div class="validos" style="color: rgb(241, 50, 50);">
+                <div *ngIf="form.get('fechaAp').errors && form.get('fechaAp').touched">
+                    <p *ngIf="form.get('fechaAp').hasError('required')">
+                        *Es un campo requerido
+                    </p>
+                </div>
             </div>
         </div>
 

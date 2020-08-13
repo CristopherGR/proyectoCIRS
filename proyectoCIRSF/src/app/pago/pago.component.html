@@ -54,29 +54,61 @@
           </button>
         </div>
         <div class="modal-body">
-          <form (ngSubmit) = "creat()">
+          <form [formGroup]="form" (ngSubmit) = "creat()">
 
             <div class="form-group row">
-                <label for="numFactura" class="col form-label col-sm-2">Fecha del credito</label>
+                <label for="numFactura" class="col form-label col-sm-2">Fecha del pago</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="pago.fechaPago" name="fecha" required>
+                    <input type="date" class="form-control" [(ngModel)]="pago.fechaPago" name="fechaPago" formControlName="fechaPago">
+                </div>
+                <div class="validos" style="color: rgb(241, 50, 50);">
+                  <div *ngIf="form.get('fechaPago').errors && form.get('fechaPago').touched">
+                      <p *ngIf="form.get('fechaPago').hasError('required')">
+                      *Es un campo requerido.
+                      </p>
+                  </div>
                 </div>
             </div>
     
             <div class="form-group row">
                 <label for="valor" class="col form-label col-sm-2">Valor</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control"  [(ngModel)]="pago.valor" name="valor" requerid>  
+                    <input type="text" class="form-control"  [(ngModel)]="pago.valor" name="valor" formControlName="valor">  
                 </div>
+                <div class="validos" style="color: rgb(241, 50, 50);">
+                  <div *ngIf="form.get('valor').errors && form.get('valor').touched">
+                      <p *ngIf="form.get('valor').hasError('required')">
+                       *Es un campo requerido
+                      </p>
+                  </div>
+                  <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                      <p *ngIf="form.get('valor').hasError('pattern')">
+                      *Este campo solo admite valores numéricos
+                      </p>
+                  </div>
+                  <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                      <p *ngIf="form.get('valor').hasError('min')">
+                      *El valor ingresado es incorrecto
+                      </p>
+                  </div>
+              </div>
             </div>
            
             <div class="form-group row">
                 <label for="tipopago" class="col form-label col-sm-2">TIPO DE PAGO</label>
                 <div class="col-sm-6">
-                    <select type="text" class="form-control" [(ngModel)]="pago.tipoPago" name="tipoPago" required>
+                    <select type="text" class="form-control" [(ngModel)]="pago.tipoPago" name="tipoPago" formControlName="tipoPago">
                         <option [ngValue]="tipopago" *ngFor="let tipopago of tipopago">{{tipopago.descripcion}}</option>
                     </select>
                 </div>
+                <div class="validos" style="color: rgb(241, 50, 50);">
+                  <div *ngIf="form.get('tipoPago').errors && form.get('tipoPago').touched">
+                      <p *ngIf="form.get('tipoPago').hasError('required')">
+                      *Es un campo requerido.
+                      </p>
+                  </div>
+              </div>
+                
             </div>
             
         </form>
@@ -85,7 +117,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary" role="button" (click) = creat()>Crear</button>
+          <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click) = creat()>Crear</button>
         </div>
       </div>
     </div>

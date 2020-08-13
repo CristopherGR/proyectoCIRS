@@ -7,7 +7,24 @@
         <div class="form-group row" >
             <label for="numCedula" class="col form-label col-sm-2 text-aling-left" >Número de cédula</label>
             <div class="col-sm-4" >
-                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="numCedula"   formControlName="numCedula">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.ciUsuario" name="ciUsuario"   formControlName="ciUsuario">
+            </div>
+            <div class="validos" style="color: rgb(241, 50, 50);">
+                <div *ngIf="form.get('ciUsuario').errors && form.get('ciUsuario').touched">
+                    <p *ngIf="form.get('ciUsuario').hasError('required')">
+                    *Es un campo requerido
+                    </p>
+                </div>
+                <div *ngIf="form.get('ciUsuario').errors && form.get('ciUsuario').dirty">
+                    <p *ngIf="form.get('ciUsuario').hasError('pattern')">
+                    Este campo solo admite valores numéricos
+                    </p>
+                </div>
+                <div *ngIf="form.get('ciUsuario').errors && form.get('ciUsuario').dirty">
+                    <p *ngIf="form.get('ciUsuario').hasError('Length')">
+                    *La cédula ingresada es incorrecto
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -108,7 +125,7 @@
         <div class="form-group row">
             <label for="nombres" class="col form-label col-sm-2">Contraseña</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" [(ngModel)]="usuarios.password" name="nombres" formControlName="nombres">
+                <input type="text" class="form-control" [(ngModel)]="usuarios.password" name="password" formControlName="password">
             </div>
             <div *ngIf="form.get('nombres').errors && form.get('nombres').touched">
                 <p *ngIf="form.get('nombres').hasError('required')">
