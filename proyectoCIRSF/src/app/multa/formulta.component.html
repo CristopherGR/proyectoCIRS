@@ -9,32 +9,36 @@
             <div class="col-sm-6">
                 <input type="text" class="form-control" [(ngModel)]="multas.valor" name="valor" formControlName="valor">
             </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').touched">
-                <p *ngIf="form.get('valor').hasError('required')">
-                  Es un campo requerido
-                </p>
-            </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
-                <p *ngIf="form.get('valor').hasError('pattern')">
-                  Este campo solol admite valores numericos
-                </p>
-            </div>
-            <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
-                <p *ngIf="form.get('valor').hasError('min')">
-                  El valor ingresado es incorrecto
-                </p>
+            <div class="validos" style="color: rgb(241, 50, 50);">
+                <div *ngIf="form.get('valor').errors && form.get('valor').touched">
+                    <p *ngIf="form.get('valor').hasError('required')">
+                     *Es un campo requerido
+                    </p>
+                </div>
+                <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                    <p *ngIf="form.get('valor').hasError('pattern')">
+                    *Este campo solo admite valores numéricos
+                    </p>
+                </div>
+                <div *ngIf="form.get('valor').errors && form.get('valor').dirty">
+                    <p *ngIf="form.get('valor').hasError('min')">
+                    *El valor ingresado es incorrecto
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="fecha" class="col form-label col-sm-2">Fecha</label>
             <div class="col-sm-6">
-                <input type="date" class="form-control" [(ngModel)]="multas.fechaMulta" name="fecha" formControlName="fechaM" >
+                <input type="date" class="form-control" [(ngModel)]="multas.fechaMulta" name="fechaMulta" formControlName="fechaMulta" >
             </div>
-            <div *ngIf="form.get('fechaM').errors && form.get('fechaM').touched">
-                <p *ngIf="form.get('fechaM').hasError('required')">
-                  Es un campo requerido
-                </p>
+            <div class="validos" style="color: rgb(241, 50, 50);">
+                <div *ngIf="form.get('fechaMulta').errors && form.get('fechaMulta').touched">
+                    <p *ngIf="form.get('fechaMulta').hasError('required')">
+                    *Es un campo requerido.
+                    </p>
+                </div>
             </div>
         </div>
 

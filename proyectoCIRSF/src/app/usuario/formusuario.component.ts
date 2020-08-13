@@ -37,13 +37,14 @@ export class FormusuarioComponent implements OnInit {
   
   private buildForm(){
     this.form = this.formBuilder.group({
-      numCedula: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      ciUsuario: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/), Validators.minLength(10)]],
       nombres: ['', [Validators.required]],
       apellidos: ['', [Validators.required]],
       fechaNa: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required], Validators.minLength(10), Validators.maxLength(10)],
+      telefono: ['', [Validators.required],Validators.pattern(/^[0-9.]+$/), Validators.minLength(10), Validators.maxLength(10)],
+      password: ['', [Validators.required]],
       idTipoU: ['', [Validators.required]]
     });
 

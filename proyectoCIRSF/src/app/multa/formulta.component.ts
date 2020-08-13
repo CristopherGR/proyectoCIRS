@@ -31,7 +31,7 @@ export class FormultaComponent implements OnInit {
   private buildForm(){
     this.form = this.formBuilder.group({
       valor: [0,[Validators.required,Validators.pattern(/^[0-9.]+$/) ,Validators.min(0.01)]],
-      fechaM: ['', [Validators.required]]
+      fechaMulta: [0, Validators.required]
     });
 
     this.form.valueChanges
