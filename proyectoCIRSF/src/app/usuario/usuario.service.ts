@@ -44,4 +44,11 @@ export class UsuarioService {
   update(usuarios: Usuarios): Observable<Usuarios>{
     return this.http.post<Usuarios>(`${this.url}/${usuarios.ciUsuario}`, usuarios);
   }
+
+  getSolicitud(): Observable <Usuarios[]>{
+    return this.http.get<Usuarios[]>(this.url + '/estado'); 
+  }
+
+
+
 }

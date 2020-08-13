@@ -22,6 +22,7 @@ public interface CreditosService {
 	
 	public List<CreditosEntity> findByUsuario(String ci);
 	
+	public List<TiposCreditos> Tipos();
 	public List<EstadosCreditos> findByEstadoA(); 
 
 }

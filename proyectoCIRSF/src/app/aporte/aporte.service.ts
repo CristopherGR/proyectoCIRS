@@ -14,10 +14,11 @@ export class AporteService {
   
   constructor(private http: HttpClient) { }
   
-  create (aporte: Aportes) : Observable <Aportes>{
-    return this.http.post<Aportes>(this.url, aporte, {headers: this.httpHeaders}); 
+  create (aporte: Aportes, ciUsuario:String ) : Observable <Aportes>{
+    return this.http.post<any>(`${this.url}/${ciUsuario}`, aporte, {headers: this.httpHeaders}); 
   }
 
+ 
   getAllAportes(): Observable <Aportes[]>{
     return this.http.get<Aportes[]>(this.url); 
   }
@@ -28,6 +29,10 @@ export class AporteService {
 
   getAporteId(id): Observable<Aportes>{
     return this.http.get<Aportes>(`${this.url}/${id}`)
+  }
+
+  getAporteUsuario(id): Observable<Aportes[]>{
+    return this.http.get<Aportes[]>(`${this.url}/usuario/${id}`)
   }
 
 }

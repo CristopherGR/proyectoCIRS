@@ -1,1 +1,92 @@
-<p>pago works!</p>
+<div class="card">
+    <div class="card-header">
+      LISTA DE CREDITOS
+    </div>
+    <div class="card-body">
+           
+            ID DEL CREDITO: {{credito.idCredito}}
+            Cuotas pagas: {{credito.cuotasPagadas}} 
+                    
+            <div class="row">
+                <div class="col-lg-4"> 
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    INGRESAR PAGO
+                  </button> 
+                </div>
+            </div>    
+    </div>
+
+        <br>    
+
+        
+        <table class="table table-bordered table-stripped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Forma de pago</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor = "let item of pagos ">
+                    
+                    <td>{{item.fechaPago }}</td>
+                    <td>{{item.valor}}</td>
+                    <td>{{item.tipoPago.descripcion}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+
+
+  <!-----------------------------MODAL------------------------------------------->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit) = "creat()">
+
+            <div class="form-group row">
+                <label for="numFactura" class="col form-label col-sm-2">Fecha del credito</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="pago.fechaPago" name="fecha" required>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <label for="valor" class="col form-label col-sm-2">Valor</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"  [(ngModel)]="pago.valor" name="valor" requerid>  
+                </div>
+            </div>
+           
+            <div class="form-group row">
+                <label for="tipopago" class="col form-label col-sm-2">TIPO DE PAGO</label>
+                <div class="col-sm-6">
+                    <select type="text" class="form-control" [(ngModel)]="pago.tipoPago" name="tipoPago" required>
+                        <option [ngValue]="tipopago" *ngFor="let tipopago of tipopago">{{tipopago.descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+            
+        </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" role="button" (click) = creat()>Crear</button>
+        </div>
+      </div>
+    </div>
+

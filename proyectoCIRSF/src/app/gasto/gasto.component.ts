@@ -21,7 +21,7 @@ export class GastoComponent implements OnInit {
   constructor(private gastoService: GastoService, private  usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.showAllGasto();
+    this.showadmin();   
   }
 
   filtro() {    
@@ -67,5 +67,12 @@ export class GastoComponent implements OnInit {
       }
     )
   }
+
+  showadmin(){
+    this.usuarioService.getUsuarioAdmin().subscribe(
+      usuario => this.usuario = usuario  
+    );
+  }
+
 
 }

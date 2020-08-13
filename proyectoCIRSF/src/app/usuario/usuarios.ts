@@ -8,5 +8,7 @@ export class Usuarios {
     direccion: string;
     telefono: string; 
     fechaNa: string;
+    password:string;
+    estado:string;
     idTipoU: TipoUsuario; 
 }

@@ -60,6 +60,13 @@ public class CreditosSerciveIm implements CreditosService{
 	}
 
 	@Override
+	public List<TiposCreditos> Tipos() {
+		// TODO Auto-generated method stub
+		return (List<TiposCreditos>) iCreditos.Tipos();
+	}
+
+
+
 	public List<EstadosCreditos> findByEstadoA() {
 		// TODO Auto-generated method stub
 		return (List<EstadosCreditos>) iCreditos.findByEstadoA();

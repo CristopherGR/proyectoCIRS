@@ -47,7 +47,7 @@ public class CreditosController {
 	@PostMapping("/creditos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevo(@RequestBody CreditosEntity credito, @PathVariable("id") String ci) {
-		creditosService.save(credito);
+	creditosService.save(credito);
 		creditosService.tablaIntermedia(ci, credito.getIdCredito());
 	}
 	
@@ -94,5 +94,11 @@ public class CreditosController {
 	public List<CreditosEntity> showByTipo(@PathVariable("id") String tipo) {
 		return creditosService.findByTipo(tipo);
 	}
+	
+	@GetMapping ("/creditos/tipos")
+	public List<TiposCreditos> showTipo() {
+		return creditosService.Tipos();
+	}
+	
 	
 }

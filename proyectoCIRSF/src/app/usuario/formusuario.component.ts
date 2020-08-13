@@ -17,8 +17,10 @@ export class FormusuarioComponent implements OnInit {
 
   public title: string = "Ingresar Usuario";   
   public tipoUsuario: TipoUsuario[]; 
-  public usuarios: Usuarios = new Usuarios(); 
-  
+  public usuarios: Usuarios = new Usuarios();
+ 
+
+
   form: FormGroup;
 
   constructor(private usuarioService: UsuarioService, private router: Router, private activated: ActivatedRoute, private formBuilder:FormBuilder) {
@@ -92,4 +94,6 @@ export class FormusuarioComponent implements OnInit {
       } 
     )
   }
+
+
 }

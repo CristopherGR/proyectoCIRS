@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import e5.proyectoCIRSB.creditos.TiposCreditos;
+
 
 public interface IPagos extends CrudRepository <PagosEntity, Integer>{
 	
@@ -20,5 +22,8 @@ public interface IPagos extends CrudRepository <PagosEntity, Integer>{
 	@Query(value="INSERT INTO creditospagos(id_credito, id_pago) VALUES (:id_credito, :id_pago)", nativeQuery = true)
 	@Transactional
 	public void tablaIntermedia(@Param("id_credito") Integer id_credito, @Param("id_pago") Integer id_pago);
-
+	
+	@Query("from TiposPagos")
+	public List<TiposPagos> findTiposAll();
+	
 }

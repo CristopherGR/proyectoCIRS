@@ -40,7 +40,7 @@
 
         <div class="form-group row">
             <div class="col-sm-6">
-                <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='creat()' *ngIf="!aporte.idAporte else block" >Crear</button>
+                <button class="btn btn-primary" [disabled]="form.invalid" role="button"  *ngIf="!aporte.idAporte else block" >Crear</button>
            
                 <ng-template #block>
                     <button class="btn btn-primary" [disabled]="form.invalid" role="button" (click)='updateU()'>Editar</button>
